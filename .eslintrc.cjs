@@ -14,6 +14,8 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'linebreak-style': 0,
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-no-target-blank': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react-refresh/only-export-components': [

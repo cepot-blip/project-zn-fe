@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { createBrowserRouter } from 'react-router-dom';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 import HomePage from '../pages/app';
-import NotFoundPage from '../pages/404';
 
 const modules = import.meta.glob('/src/pages/**/[a-z[]*.jsx', { eager: true });
 
@@ -31,8 +32,12 @@ const routes = createBrowserRouter([
     children: [...pages],
   },
   {
-    path: '*',
-    element: <NotFoundPage />,
+    path: 'login',
+    element: <Login />,
+  },
+  {
+    path: 'register',
+    element: <Register />,
   },
 ]);
 
