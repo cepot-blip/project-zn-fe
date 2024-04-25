@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import InputField from '../components/fragment/InputField';
 import AuthTemplate from '../components/template/AuthTemplate';
 
@@ -27,7 +28,10 @@ export default function Login() {
         Sign In
       </button>
       <p className="text-base text-center text-white">
-        Dont Have Account? <span className="text-[#FF872E]">Sign Up</span>
+        Dont Have Account?{' '}
+        <Link to="/register" className="text-[#FF872E]">
+          Sign Up
+        </Link>
       </p>
     </AuthTemplate>
   );

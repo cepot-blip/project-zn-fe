@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import InputField from '../components/fragment/InputField';
 import AuthTemplate from '../components/template/AuthTemplate';
 
@@ -24,7 +25,10 @@ export default function Register() {
         Lanjutkan
       </button>
       <p className="text-base text-center text-white">
-        Sudah Punya Akun? <span className="text-[#FF872E]">Sign In</span>
+        Sudah Punya Akun?{' '}
+        <Link to="/login" className="text-[#FF872E]">
+          Sign In
+        </Link>
       </p>
     </AuthTemplate>
   );
