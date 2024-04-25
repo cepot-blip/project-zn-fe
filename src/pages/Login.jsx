@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputField from '../components/fragment/InputField';
 import AuthTemplate from '../components/template/AuthTemplate';
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+
   return (
     <AuthTemplate image="Login.png" title="Sign In to Your Account">
       <InputField
+        htmlFor="email"
         name="Email Address"
         placeholder="Masukkan Alamat Email Anda"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <InputField
+        htmlFor="password"
         placeholder="Masukkan Password Anda"
         type="password"
         name="Password"

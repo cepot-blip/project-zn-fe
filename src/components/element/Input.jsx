@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function Input(props) {
@@ -8,3 +9,19 @@ export default function Input(props) {
     />
   );
 }
+
+Input.propTypes = {
+  type: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
+Input.defaultProps = {
+  type: 'text',
+  name: '',
+  placeholder: '',
+  value: '',
+  onChange: () => {},
+};

@@ -7,10 +7,12 @@ export default function Register() {
     <AuthTemplate image="Register.png" title="Daftar Sekarang!">
       <InputField name="Username" placeholder="Masukkan nama lengkap Anda" />
       <InputField
+        htmlFor="email"
         name="Alamat Email"
         placeholder="Masukkan alamat email Anda"
       />
       <InputField
+        htmlFor="password"
         placeholder="Masukkan Password Anda"
         type="password"
         name="Password"

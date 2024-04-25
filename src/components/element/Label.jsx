@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Label({ name, ...props }) {
+export default function Label({ htmlFor, name, ...props }) {
   return (
     <label
-      htmlFor={name}
+      htmlFor={htmlFor}
       {...props}
       className="block text-white  pb-1 font-medium text-xl"
     >
@@ -14,5 +14,11 @@ export default function Label({ name, ...props }) {
 }
 
 Label.propTypes = {
-  name: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string,
+  name: PropTypes.string,
+};
+
+Label.defaultProps = {
+  htmlFor: '',
+  name: '',
 };
