@@ -1,29 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../components/element/Button';
 import InputField from '../components/fragment/InputField';
 import AuthTemplate from '../components/template/AuthTemplate';
 
 export default function Register() {
   return (
     <AuthTemplate image="Register.png" title="Daftar Sekarang!">
-      <InputField name="Username" placeholder="Masukkan nama lengkap Anda" />
+      <InputField
+        name="Username"
+        placeholder="Masukkan nama lengkap Anda"
+        required
+      />
       <InputField
         htmlFor="email"
         name="Alamat Email"
+        type="email"
         placeholder="Masukkan alamat email Anda"
+        required
       />
       <InputField
         htmlFor="password"
-        placeholder="Masukkan Password Anda"
-        type="password"
         name="Password"
+        type="password"
+        placeholder="Masukkan Password Anda"
+        required
       />
-      <button
-        type="submit"
-        className="w-full flex items-center justify-center h-14 bg-[#FF872E] rounded-[10px] font-semibold text-xl text-white"
-      >
-        Lanjutkan
-      </button>
+
+      <Button type="submit">Lanjutkan</Button>
+
       <p className="text-base text-center text-white">
         Sudah Punya Akun?{' '}
         <Link to="/login" className="text-[#FF872E]">

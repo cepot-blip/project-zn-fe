@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../components/element/Button';
 import InputField from '../components/fragment/InputField';
 import AuthTemplate from '../components/template/AuthTemplate';
 
@@ -13,6 +14,7 @@ export default function Login() {
         name="Email Address"
         placeholder="Masukkan Alamat Email Anda"
         value={email}
+        required
         onChange={(e) => setEmail(e.target.value)}
       />
       <InputField
@@ -20,13 +22,9 @@ export default function Login() {
         placeholder="Masukkan Password Anda"
         type="password"
         name="Password"
+        required
       />
-      <button
-        type="submit"
-        className="w-full flex items-center justify-center h-14 bg-[#FF872E] rounded-[10px] font-semibold text-xl text-white"
-      >
-        Sign In
-      </button>
+      <Button>Sign In</Button>
       <p className="text-base text-center text-white">
         Dont Have Account?{' '}
         <Link to="/register" className="text-[#FF872E]">
