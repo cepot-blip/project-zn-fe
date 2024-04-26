@@ -11,7 +11,7 @@ export default function AuthTemplate({ title, children, image }) {
         <h2 className="text-white lg:whitespace-nowrap font-medium text-4xl mb-10">
           {title}
         </h2>
-        <form className="flex flex-col gap-4 flex-1">{children}</form>
+        <div>{children}</div>
       </div>
       <img
         src="Radial.png"

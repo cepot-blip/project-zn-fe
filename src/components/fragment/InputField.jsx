@@ -6,6 +6,7 @@ export default function InputField({
   htmlFor,
   required,
   type,
+  labelName,
   ...props
 }) {
   return (
@@ -14,9 +15,10 @@ export default function InputField({
         htmlFor={htmlFor}
         className="block text-white  pb-1 font-medium text-xl"
       >
-        {name} {required && <span className="text-red-600">*</span>}
+        {labelName} {required && <span className="text-red-600">*</span>}
       </label>
       <input
+        name={name}
         id={htmlFor}
         required={required}
         type={type}
@@ -33,6 +35,7 @@ InputField.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string.isRequired,
+  labelName: PropTypes.string.isRequired,
 };
 
 InputField.defaultProps = {
