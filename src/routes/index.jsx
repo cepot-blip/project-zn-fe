@@ -67,12 +67,12 @@ const routes = createBrowserRouter([
   },
   {
     path: 'login',
-    element: <Login />,
+    element: token ? <Navigate to="/" /> : <Login />,
     action: loginAction,
   },
   {
     path: 'register',
-    element: <Register />,
+    element: token ? <Navigate to="/" /> : <Register />,
     action: registerAction,
   },
   {
