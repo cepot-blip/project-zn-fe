@@ -1,19 +1,19 @@
-import { Outlet } from 'react-router-dom';
-
-import reactLogo from '../assets/react.svg';
-import viteLogo from '/vite.svg';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   return (
-    <section>
-      <div>
-        <img src={viteLogo} className="logo" alt="Vite logo" />
-        <img src={reactLogo} className="logo react" alt="React logo" />
+    <div className="flex items-center justify-center bg-[#233691] h-screen">
+      <div className="flex flex-col gap-4 text-white">
+        <h2>Hello Homepage</h2>
+        <Link
+          to="/protected"
+          className="text-[#FF872E] border-2 border-[#FF872E] px-2 py-1"
+        >
+          Need Login to click me
+        </Link>
       </div>
-      <h1>Vite + React</h1>
-      <p>Initiated by Rully Saputra</p>
-      <Outlet />
-    </section>
+    </div>
   );
 }
 
