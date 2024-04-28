@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function AuthTemplate({ title, children, image }) {
   return (
-    <div className="relative  bg-[#233691] h-screen w-screen flex items-center justify-center lg:gap-[105px]">
+    <div className="relative  bg-primary h-screen w-screen flex items-center justify-center lg:gap-[105px]">
       <div className="hidden lg:block">
         <img src={image} alt="login" />
       </div>
@@ -16,7 +16,9 @@ export default function AuthTemplate({ title, children, image }) {
       <img
         src="Radial.png"
         alt="radial"
-        className="absolute top-0 right-0 z-10"
+        width={750}
+        height={750}
+        className="absolute md:-top-[30%] -top-[20%] -right-[50%] md:-right-[12%] z-10 "
       />
     </div>
   );
