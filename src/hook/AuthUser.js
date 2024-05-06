@@ -4,14 +4,14 @@ import Cookies from 'js-cookie';
 export async function createUser({ username, email, password }) {
   try {
     const response = await axios.post(
-      'http://localhost:9000/api_v1/users/create',
+      'http://localhost:9000/api/users/create',
       {
         username,
         email,
         password,
       },
     );
-    Cookies.set('token', response.data.token);
+
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -27,13 +27,10 @@ export async function createUser({ username, email, password }) {
 
 export async function loginUser({ email, password }) {
   try {
-    const response = await axios.post(
-      'http://localhost:9000/api_v1/users/login',
-      {
-        email,
-        password,
-      },
-    );
+    const response = await axios.post('http://localhost:9000/api/users/login', {
+      email,
+      password,
+    });
     Cookies.set('token', response.data.token);
     return response.data;
   } catch (error) {

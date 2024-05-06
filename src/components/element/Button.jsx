@@ -1,26 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Button({
-  fullrounded,
-  outline,
-  onClick,
-  children,
-  ...props
-}) {
-  if (fullrounded) {
-    return (
-      <button
-        {...props}
-        onClick={onClick}
-        type="button"
-        className={`${outline ? 'border-white hover:bg-white hover:text-[#FF872E] border w-full h-14 rounded-full' : 'bg-[#FF872E] hover:bg-green-400 w-full h-14 rounded-full font-semibold text-xl'}`}
-      >
-        {children}
-      </button>
-    );
-  }
-
+export default function Button({ onClick, children, ...props }) {
   return (
     <button
       {...props}
@@ -36,13 +17,9 @@ export default function Button({
 Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
-  fullrounded: PropTypes.bool,
-  outline: PropTypes.bool,
 };
 
 Button.defaultProps = {
   onClick: () => {},
   children: '',
-  fullrounded: false,
-  outline: false,
 };

@@ -1,25 +1,18 @@
 import React from 'react';
 
 import Cookies from 'js-cookie';
-import {
-  Navigate,
-  Outlet,
-  createBrowserRouter,
-  redirect,
-} from 'react-router-dom';
+import { Navigate, createBrowserRouter, redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import ProtectedLayout from '../components/template/ProtectedLayout';
 import { createUser, loginUser } from '../hook/AuthUser';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import SetProfile from '../pages/SetProfile';
 import HomePage from '../pages/app';
+import Beranda from '../pages/Beranda';
 
 const token = Cookies.get('token');
 
 async function registerAction({ request }) {
   const formData = await request.formData();
-
   const username = formData.get('username');
   const email = formData.get('email');
   const password = formData.get('password');
@@ -31,10 +24,8 @@ async function registerAction({ request }) {
   if (res.status === false) {
     return res.message;
   }
-
-  Cookies.set('token', res.data.token);
   toast.success('Register Success');
-  return redirect('/register/set-profile');
+  return redirect('/login');
 }
 
 async function loginAction({ request }) {
@@ -44,9 +35,9 @@ async function loginAction({ request }) {
   const res = await loginUser({ email, password });
   if (!res.success) {
     toast.error(res.error.msg);
-    return null;
+    return res.error.msg;
   }
-  return redirect('/dashboard');
+  return redirect('/');
 }
 
 const modules = import.meta.glob('/src/pages/**/[a-z[]*.jsx', { eager: true });
@@ -72,19 +63,8 @@ const pages = Object.keys(modules)
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <ProtectedLayout>
-        <HomePage />
-      </ProtectedLayout>
-    ),
-    children: [
-      ...pages,
-      {
-        path: 'dashboard',
-        element: <div>Dashboard</div>,
-        index: true,
-      },
-    ],
+    element: <HomePage />,
+    children: [...pages],
   },
   {
     path: 'login',
@@ -93,23 +73,16 @@ const routes = createBrowserRouter([
   },
   {
     path: 'register',
-    element: <Outlet />,
-    children: [
-      {
-        path: '',
-        element: token ? <Navigate to="/dashboard" /> : <Register />,
-        action: registerAction,
-        index: true,
-      },
-      {
-        path: 'set-profile',
-        element: <SetProfile />,
-      },
-    ],
+    element: token ? <Navigate to="/" /> : <Register />,
+    action: registerAction,
   },
   {
     path: 'protected',
     element: token ? <div>Protected Layout</div> : <Navigate to="/login" />,
+  },
+  {
+    path: 'beranda',
+    element: <Beranda />,
   },
 ]);
 

@@ -1,0 +1,56 @@
+.follow {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5% 8%;
+  margin-top: 5%;
+}
+
+.follow-1 {
+  display: grid;
+  grid-template-columns: 20% 40% 40%;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.follow-1-1 {
+  background-color: rgb(71, 100, 203);
+  border-radius: 50%;
+  width: 3.5vw;
+  height: 7vh;
+}
+
+.follow-1-2 {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  padding-left: 5%;
+}
+
+.follow-1-2-1 h1 {
+  font-size: bold;
+}
+
+.follow-1-2-1 p {
+  color: gray;
+  font-size: 10px;
+}
+
+.follow-1-2-2 .img {
+  height: 2vh;
+  margin-top: 35%;
+}
+
+.follow-1-3 button {
+  margin-left: 20%;
+  margin-top: 20%;
+  background-color: rgb(71, 100, 203);
+  border-radius: 10px;
+  width: 7vw;
+  height: 4vh;
+  color: white;
+}
+
+.follow-2 {
+  margin-top: 10%;
+  color: royalblue;
+  font-size: 13px;
+}
