@@ -7,6 +7,7 @@ import { createUser, loginUser } from '../hook/AuthUser';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import HomePage from '../pages/app';
+import Beranda from '../pages/Beranda';
 
 const token = Cookies.get('token');
 
@@ -78,6 +79,10 @@ const routes = createBrowserRouter([
   {
     path: 'protected',
     element: token ? <div>Protected Layout</div> : <Navigate to="/login" />,
+  },
+  {
+    path: 'beranda',
+    element: <Beranda />,
   },
 ]);
 
