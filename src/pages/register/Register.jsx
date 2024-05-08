@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useFetcher } from 'react-router-dom';
-import Button from '../components/element/Button';
-import InputField from '../components/fragment/InputField';
-import AuthTemplate from '../components/template/AuthTemplate';
-import { useAuth } from '../context/useAuth';
+import Button from '../../components/element/Button';
+import InputField from '../../components/fragment/InputField';
+import AuthTemplate from '../../components/template/AuthTemplate';
+import { useAuth } from '../../context/useAuth';
 
 export default function Register() {
   const { state, dispatch } = useAuth();

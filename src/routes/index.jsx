@@ -73,16 +73,23 @@ const routes = createBrowserRouter([
   },
   {
     path: 'register',
-    element: token ? <Navigate to="/" /> : <Register />,
-    action: registerAction,
-  },
-  {
-    path: 'protected',
-    element: token ? <div>Protected Layout</div> : <Navigate to="/login" />,
-  },
-  {
-    path: 'beranda',
-    element: <Beranda />,
+    element: <Outlet />,
+    children: [
+      {
+        path: '',
+        element: token ? <Navigate to="/dashboard" /> : <Register />,
+        action: registerAction,
+        index: true,
+      },
+      {
+        path: 'set-profile',
+        element: <SetProfile />,
+      },
+      {
+        path: 'welcome',
+        element: <Welcome />,
+      },
+    ],
   },
 ]);
 

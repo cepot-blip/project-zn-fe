@@ -17,6 +17,9 @@ export default function Button({ onClick, children, ...props }) {
 Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
+  fullrounded: PropTypes.bool,
+  outline: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
