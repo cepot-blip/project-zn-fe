@@ -9,31 +9,32 @@ import {
 } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ProtectedLayout from '../components/template/ProtectedLayout';
-import { createUser, loginUser } from '../hook/AuthUser';
 import Login from '../pages/Login';
-import Register from '../pages/Register';
-import SetProfile from '../pages/SetProfile';
 import HomePage from '../pages/app';
+import Register from '../pages/register/Register';
+import SetProfile from '../pages/register/SetProfile';
+import Welcome from '../pages/register/Welcome';
+import { loginUser } from '../services/AuthUser';
 
 const token = Cookies.get('token');
 
-async function registerAction({ request }) {
-  const formData = await request.formData();
+async function registerAction() {
+  // const formData = await request.formData();
 
-  const username = formData.get('username');
-  const email = formData.get('email');
-  const password = formData.get('password');
-  const res = await createUser({ username, email, password });
-  if (!res.success) {
-    return res.error;
-  }
+  // const username = formData.get('username');
+  // const email = formData.get('email');
+  // const password = formData.get('password');
+  // const res = await createUser({ username, email, password });
+  // if (!res.success) {
+  //   return res.error;
+  // }
 
-  if (res.status === false) {
-    return res.message;
-  }
+  // if (res.status === false) {
+  //   return res.message;
+  // }
 
-  Cookies.set('token', res.data.token);
-  toast.success('Register Success');
+  // Cookies.set('token', res.data.token);
+  // toast.success('Register Success');
   return redirect('/register/set-profile');
 }
 
@@ -77,6 +78,7 @@ const routes = createBrowserRouter([
         <HomePage />
       </ProtectedLayout>
     ),
+
     children: [
       ...pages,
       {
@@ -105,11 +107,11 @@ const routes = createBrowserRouter([
         path: 'set-profile',
         element: <SetProfile />,
       },
+      {
+        path: 'welcome',
+        element: <Welcome />,
+      },
     ],
-  },
-  {
-    path: 'protected',
-    element: token ? <div>Protected Layout</div> : <Navigate to="/login" />,
   },
 ]);
 

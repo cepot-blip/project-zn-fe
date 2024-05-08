@@ -25,6 +25,32 @@ export async function createUser({ username, email, password }) {
   }
 }
 
+export async function getUser() {
+  try {
+    const res = await axios.post(
+      'http://localhost:9000/api_v1/users/get',
+      {}, // Data dikirimkan sebagai objek kedua
+      {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('token')}`,
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      },
+    );
+    return res.data;
+  } catch (error) {
+    if (error.response) {
+      return { error: error.response.data };
+    }
+
+    if (error.request) {
+      return { error: 'No response from server' };
+    }
+    return { error: error.message };
+  }
+}
+
 export async function loginUser({ email, password }) {
   try {
     const response = await axios.post(
@@ -46,22 +72,3 @@ export async function loginUser({ email, password }) {
     return { error: error.message };
   }
 }
-
-// export function useRegister() {
-//   const {
-//     mutate: register,
-//     isLoading,
-//     isSuccess,
-//   } = useMutation({
-//     mutationFn: ({ username, email, password }) =>
-//       createUser({ username, email, password }),
-//     onSuccess: () => {
-//       // window.open('/login', '_self');
-//     },
-//     onError: (err) => {
-//       console.log('ERROR', err.message);
-//     },
-//   });
-
-//   return { register, isLoading, isSuccess };
-// }
