@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Button from '../../components/element/Button';
+import Button from '../../../components/element/Button';
 
 export default function SetProfile() {
   const [skip, setSkip] = useState(false);
@@ -21,7 +21,7 @@ export default function SetProfile() {
   };
 
   if (skip) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/beranda" replace />;
   }
 
   return (

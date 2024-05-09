@@ -1,0 +1,41 @@
+.MainContent-1 {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5%;
+  margin-top: 5%;
+}
+
+.MainContent-1-1 {
+  display: grid;
+  grid-template-columns: 9% 91%;
+  height: 8vh;
+}
+
+.MainContent-1-1-1 {
+  background-color: rgb(71, 100, 203);
+  border-radius: 50%;
+}
+
+.MainContent-1-1-2 {
+  padding-left: 3%;
+}
+
+.MainContent-1-1-2 .p {
+  font-size: 10px;
+  color: gray;
+}
+
+/* MainContent-1-2 Start */
+
+.MainContent-1-2 {
+  display: grid;
+  grid-template-columns: 11.5% 88.5%;
+  justify-content: space-between;
+}
+
+.MainContent-1-2-2-1 {
+  height: 50vh;
+  width: 100%;
+  border-radius: 10px;
+  background-color: darkgreen;
+}

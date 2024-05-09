@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useFetcher } from 'react-router-dom';
-import Button from '../components/element/Button';
-import InputField from '../components/fragment/InputField';
-import AuthTemplate from '../components/template/AuthTemplate';
+import Button from '../../components/element/Button';
+import InputField from '../../components/fragment/InputField';
+import AuthTemplate from '../../components/template/AuthTemplate';
 
 export default function Login() {
   const fetcher = useFetcher();

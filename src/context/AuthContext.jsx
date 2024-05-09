@@ -25,7 +25,9 @@ const reducer = (state, action) => {
 
 export default function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initalState);
+
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
+
   return (
     <loginContext.Provider value={contextValue}>
       {children}

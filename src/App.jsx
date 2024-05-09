@@ -29,7 +29,7 @@ function App() {
         draggable
         pauseOnHover
         transition={Flip}
-        toastClassName="text-white border-[#233691]"
+        toastClassName="text-black border-[#233691]"
       />
     </QueryClientProvider>
   );

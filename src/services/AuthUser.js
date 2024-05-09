@@ -11,17 +11,17 @@ export async function createUser({ username, email, password }) {
         password,
       },
     );
-    Cookies.set('token', response.data.token);
+
     return response.data;
   } catch (error) {
     if (error.response) {
-      return { error: error.response.data };
+      throw new Error('user already exists');
     }
 
     if (error.request) {
-      return { error: 'No response from server' };
+      throw new Error('mngik');
     }
-    return { error: error.message };
+    throw new Error('Something went wrong');
   }
 }
 

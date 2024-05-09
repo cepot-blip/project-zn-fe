@@ -7,6 +7,7 @@ export default function Button({
   onClick,
   children,
   className,
+
   ...props
 }) {
   if (fullrounded) {
@@ -15,7 +16,7 @@ export default function Button({
         {...props}
         onClick={onClick}
         type="button"
-        className={`${outline ? `${className}border-white hover:bg-white hover:text-[#FF872E] border w-full h-14 rounded-full` : `${className} bg-[#FF872E] hover:bg-green-400 text-white w-full h-14 rounded-full font-semibold text-xl`}`}
+        className={`${outline ? 'border-white hover:bg-white hover:text-[#FF872E] border w-full h-14 rounded-full' : `${className} rounded-full font-semibold text-xl text-white`}`}
       >
         {children}
       </button>
@@ -37,6 +38,7 @@ export default function Button({
 Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
+
   fullrounded: PropTypes.bool,
   outline: PropTypes.bool,
   className: PropTypes.string,
@@ -47,5 +49,5 @@ Button.defaultProps = {
   children: '',
   fullrounded: false,
   outline: false,
-  className: '',
+  className: 'bg-[#FF872E]  hover:bg-green-400  w-full h-14',
 };

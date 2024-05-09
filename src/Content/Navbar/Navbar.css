@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid blue;
+}
+
+.navbar-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-2 .input {
+  padding: 4px;
+  border-radius: 10px;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+.navbar-2 .input#Search {
+  background-image: url('/public/Search.png');
+  background-position: 5px;
+  background-size: 20px;
+  padding-left: 40px;
+}
+
+.navbar-2 .input:focus {
+  border: 1px solid red;
+}
+
+.navbar-3,
+.navbar-4,
+.navbar-5,
+.navbar-6 {
+  padding: 1%;
+}
+
+.navbar-4 {
+  background-color: rgb(71, 100, 203);
+  border-radius: 50%;
+  height: 7vh;
+  width: 3.5vw;
+}

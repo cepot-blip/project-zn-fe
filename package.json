@@ -12,12 +12,15 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.3.6",
     "@tanstack/react-query": "^5.32.0",
     "@tanstack/react-query-devtools": "^5.32.0",
     "@vitejs/plugin-react": "^4.2.1",
     "axios": "^1.6.8",
+    "framer-motion": "^11.1.9",
     "js-cookie": "^3.0.5",
     "localforage": "^1.10.0",
+    "lucide-react": "^0.378.0",
     "match-sorter": "^6.3.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
