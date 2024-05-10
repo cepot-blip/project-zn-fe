@@ -5,34 +5,27 @@ import {
   MessageSquareMore,
   Share2,
 } from 'lucide-react';
-import React from 'react';
 
 const Icons = [
   {
     id: 1,
-    icon: (
-      <MessageSquareMore
-        size={22}
-        className="text-[#FF872E]"
-        strokeWidth={1.5}
-      />
-    ),
+    icon: MessageSquareMore,
   },
   {
     id: 2,
-    icon: <Heart size={22} className="text-[#FF872E]" strokeWidth={1.5} />,
+    icon: Heart,
   },
   {
     id: 3,
-    icon: <Share2 size={22} className="text-[#FF872E]" strokeWidth={1.5} />,
+    icon: Share2,
   },
   {
     id: 4,
-    icon: <Bookmark size={22} className="text-[#FF872E]" strokeWidth={1.5} />,
+    icon: Bookmark,
   },
   {
     id: 5,
-    icon: <BarChart2 size={22} className="text-[#FF872E]" strokeWidth={1.5} />,
+    icon: BarChart2,
   },
 ];
 

@@ -6,10 +6,10 @@ import './Navbar.css';
 
 export default function Navbar() {
   return (
-    <div className="flex justify-between items-center  px-20  mx-auto">
+    <div className="flex justify-between items-center px-20 mx-auto shadow">
       <div>
         <NavLink to="#">
-          <img src="/zn.svg" alt="logo" />
+          <img className="w-16 h-16" src="/zn.svg" alt="logo" />
         </NavLink>
       </div>
 
@@ -18,20 +18,23 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="Search"
-            className="input lg:w-[538px] md:w-[300px] h-12"
+            className="input hidden lg:block lg:w-[538px] md:w-[300px] h-12"
             name=""
             id="Search"
           />
         </div>
       </div>
 
-      <div className="flex gap-12 items-center">
+      <div className="flex gap-8 items-center">
         <NavLink to="#">
           <Bell size={36} strokeWidth={1.25} />
         </NavLink>
         <div className="flex items-center gap-3">
           <NavLink to="#">
-            <UserImg src="/profile.png" alt="profile" />
+            <UserImg
+              src="https://th.bing.com/th/id/OIP.Sw0g2adwtwCJAbIAveYGbgHaHa?rs=1&pid=ImgDetMain"
+              alt="profile"
+            />
           </NavLink>
 
           <h1>Username</h1>

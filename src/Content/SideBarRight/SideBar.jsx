@@ -1,3 +1,4 @@
+import { Image } from '@nextui-org/react';
 import { ChevronUp, Ellipsis } from 'lucide-react';
 import React from 'react';
 import { toast } from 'react-toastify';
@@ -10,17 +11,21 @@ export default function SideBarRigt() {
     toast.success('Coming Soon');
   };
   return (
-    <div className="h-screen w-72 justify-self-center col-span-2 pt-4">
+    <div className="h-screen w-96 justify-self-center mr-4 pt-4">
       <Trandding />
       <Follow />
-      <div className="w-72 bg-[#3769A5] rounded-md h-[42px] flex items-center pl-4 pr-2 mt-2 fixed bottom-2 right-6">
+      <div className="w-full max-w-64 bg-[#3769A5] rounded-md h-[42px] flex items-center pl-4 pr-2 mt-2 fixed bottom-2 right-6">
         <div className="flex items-center justify-between w-full">
           <div className="flex gap-2">
-            <img
-              className="w-[27px] h-[27px]"
-              src="/profile.png"
-              alt="profile"
-            />
+            <div className="flex rounded-full max-w-[27px] max-h-[27px]">
+              <Image
+                className=" object-cover"
+                width={27}
+                height={27}
+                src="https://th.bing.com/th/id/OIP.Sw0g2adwtwCJAbIAveYGbgHaHa?rs=1&pid=ImgDetMain"
+                alt="profile"
+              />
+            </div>
             <p className="text-white">Message</p>
           </div>
           <div className="flex gap-2 items-center">

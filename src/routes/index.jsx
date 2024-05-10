@@ -5,6 +5,7 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 import SideBarMiddle from '../Content/SideBarMiddle/SideBar';
 import HomePage from '../pages/app';
 import Beranda from '../pages/beranda/Beranda';
+import Explore from '../pages/beranda/Explore';
 
 const token = Cookies.get('token');
 
@@ -32,7 +33,25 @@ const routes = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
-    children: [...pages],
+    children: [
+      ...pages,
+      {
+        path: '',
+        element: <Beranda />,
+        children: [
+          {
+            path: '',
+            index: true,
+            element: <SideBarMiddle />,
+          },
+
+          {
+            path: 'explore',
+            element: <Explore />,
+          },
+        ],
+      },
+    ],
   },
   {
     path: 'protected',
@@ -50,11 +69,7 @@ const routes = createBrowserRouter([
 
       {
         path: 'explore',
-        element: (
-          <div className="border justify-self-start col-span-4 border-black p-[2.5%] w-full ">
-            <p>explore page</p>
-          </div>
-        ),
+        element: <Explore />,
       },
     ],
   },

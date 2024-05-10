@@ -8,9 +8,11 @@ export default function Beranda() {
   return (
     <>
       <Navbar />
-      <div className="grid justify-items-center border grid-cols-7 w-full">
+      <div className="flex justify-between justify-items-center grid-cols-7 w-full">
         <SideBarLeft />
-        <Outlet />
+        <div className="justify-self-start col-span-4 grid-rows-1 px-3 py-4 mx-auto  w-[90%] ">
+          <Outlet />
+        </div>
         <SideBarRigt />
       </div>
     </>

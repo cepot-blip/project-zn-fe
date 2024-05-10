@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Button from '../../../components/element/Button';
 import UserImg from '../../../components/element/UserImg';
-import './Postingan.css';
 
 const iconPostingan = [
   'Imagesmode.svg',
@@ -14,19 +13,18 @@ const iconPostingan = [
 
 export default function Postingan() {
   return (
-    <div className="postingan">
-      <div className="postingan-1">
-        <UserImg src="profile.png" alt="profile" />
-
-        <input
+    <div className="shadow-md rounded-md border pl-3 p-5">
+      <div className="flex gap-4">
+        <UserImg alt="profile" />
+        <textarea
           type="text"
           placeholder="Apa Yang Anda Pikirkan ?!"
-          className="postingan-1-2"
+          className="h-20 w-[90%] p-2"
         />
       </div>
-      <div className="Postingan-2">
-        <div className="postingan-2-1">
-          <ul className="ml-10">
+      <div className="mt-2">
+        <div className="flex justify-between px-4 items-center">
+          <ul className="ml-10 flex gap-4 items-center">
             {iconPostingan.map((icon) => (
               <li key={icon}>
                 <NavLink to="#">
@@ -34,10 +32,10 @@ export default function Postingan() {
                 </NavLink>
               </li>
             ))}
-            <Button fullrounded className="button w-32 h-10 bg-[#3769A5] ">
-              Post
-            </Button>
           </ul>
+          <Button fullrounded className="w-32 h-10 bg-[#3769A5] ">
+            Post
+          </Button>
         </div>
       </div>
     </div>

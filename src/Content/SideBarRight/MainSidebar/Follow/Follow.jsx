@@ -13,7 +13,7 @@ const followData = [
 
 export default function Follow() {
   return (
-    <div className="follow">
+    <div className="shadow-md w-full border py-[5%] mt-8 px-[6%] rounded-md">
       <h1 className="font-bold">Follow</h1>
       <div className="flex flex-col gap-2 mt-3">
         {followData.map((user, index) => (
