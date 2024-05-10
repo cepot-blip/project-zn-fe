@@ -9,7 +9,6 @@ import {
   Users,
 } from 'lucide-react';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import Button from '../../components/element/Button';
 import SidebarItem from '../../components/element/SideBarItem';
 import UserImg from '../../components/element/UserImg';
@@ -30,14 +29,12 @@ export default function SideBarLeft() {
     <div className="flex row-span-1 justify-self-start col-span-1 flex-col items-center justify-between lg:h-[90vh] pb-10">
       <div className="flex flex-col w-full gap-4 px-4 mt-10 justify-center ">
         {sidebarItems.map((item) => (
-          <NavLink to={item.link}>
-            <SidebarItem
-              key={item.text}
-              icon={item.icon}
-              link={item.link}
-              text={item.text}
-            />
-          </NavLink>
+          <SidebarItem
+            key={item.text}
+            icon={item.icon}
+            link={item.link}
+            text={item.text}
+          />
         ))}
       </div>
 

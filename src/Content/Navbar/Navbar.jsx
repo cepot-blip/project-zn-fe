@@ -1,8 +1,8 @@
+import { Input } from '@nextui-org/react';
 import { Bell, ChevronDown } from 'lucide-react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import UserImg from '../../components/element/UserImg';
-import './Navbar.css';
 
 export default function Navbar() {
   return (
@@ -13,16 +13,8 @@ export default function Navbar() {
         </NavLink>
       </div>
 
-      <div>
-        <div className="navbar-2 w-full">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input hidden lg:block lg:w-[538px] md:w-[300px] h-12"
-            name=""
-            id="Search"
-          />
-        </div>
+      <div className="w-full max-w-80">
+        <Input size="sm" type="text" label="search" className="w-full" />
       </div>
 
       <div className="flex gap-8 items-center">

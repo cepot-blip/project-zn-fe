@@ -6,5 +6,5 @@ export default function CustomIcon({ Name, ...props }) {
 }
 
 CustomIcon.propTypes = {
-  Name: PropTypes.string.isRequired,
+  Name: PropTypes.node.isRequired,
 };
