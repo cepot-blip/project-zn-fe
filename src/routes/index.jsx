@@ -6,6 +6,7 @@ import SideBarMiddle from '../Content/SideBarMiddle/SideBar';
 import HomePage from '../pages/app';
 import Beranda from '../pages/beranda/Beranda';
 import Explore from '../pages/beranda/Explore';
+import Message from '../pages/beranda/Message';
 
 const token = Cookies.get('token');
 
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
           {
             path: 'explore',
             element: <Explore />,
+          },
+          {
+            path: 'message',
+            element: <Message />,
           },
         ],
       },

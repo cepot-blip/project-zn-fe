@@ -17,7 +17,7 @@ export default function Top() {
   if (!pathname[0]) pathname[0] = '';
   return (
     <div
-      className={`top ${pathname[pathname.length - 1] === 'explore' ? 'hidden' : ''} shadow-md w-full border py-[5%] px-[6%] rounded-md`}
+      className={`top ${pathname[pathname.length - 1] === 'explore' || pathname[pathname.length - 1] === 'message' ? 'hidden' : ''} shadow-md w-full border py-[5%] px-[6%] rounded-md`}
     >
       <h1 className="font-bold text-base">Trending</h1>
       {TranddingData.map((data) => (
