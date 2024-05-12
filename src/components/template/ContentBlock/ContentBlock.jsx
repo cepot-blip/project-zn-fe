@@ -12,7 +12,8 @@ export default function ContentBlock({ item }) {
   const [openComment, setOpenComment] = useState(false);
   const { user = {} } = useDetailUser(item.user_id);
   const { createLike } = useSendLike();
-  const { getLikeData = {} } = useGetLike({ id: item.id });
+  const { getLikeData = { query: [] } } = useGetLike({ id: item.id });
+
   const isLiked = getLikeData?.query[0]?.story_id === item.id;
   const likeId = getLikeData?.query[0]?.id;
 
@@ -28,12 +29,11 @@ export default function ContentBlock({ item }) {
     <div className="shadow-md rounded-md mt-8 border px-4 py-4">
       <div className="flex items-center gap-4">
         <NavLink to="#">
-          <UserImg alt="user" />
+          <UserImg src={user?.query?.profilePicture} alt="user" />
         </NavLink>
-
         <div className="text-sm text-gray-600">
           <p>{user?.query?.fullName}</p>
-          <p className="p">3 hours ago {item.id}</p>
+          <p className="p">story id {item.id}</p>
         </div>
       </div>
       <div>
@@ -63,10 +63,14 @@ export default function ContentBlock({ item }) {
                   onChange={() => setOpenComment(!openComment)}
                 />
               </li>
-              <li>
+              <li className="flex gap-1">
                 <button type="button" onClick={() => handleLike()}>
-                  <Heart fill={`${isLiked ? '#FF872E' : 'none'}`} />
+                  <Heart
+                    className="hover:scale-105 active:scale-95"
+                    fill={`${isLiked ? '#FF872E' : 'none'}`}
+                  />
                 </button>
+                <p className="text-sm">{item.like_count}</p>
               </li>
             </ul>
           </div>

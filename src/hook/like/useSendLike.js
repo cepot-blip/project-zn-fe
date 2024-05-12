@@ -8,6 +8,7 @@ export default function useSendLike() {
     mutationFn: ({ id, likeId }) => sendandDeleteLike({ id, likeId }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['like'] });
+      queryClient.invalidateQueries({ queryKey: ['story'] });
     },
     onError: (err) => {
       toast.error(err.message);
