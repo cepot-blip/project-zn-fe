@@ -1,20 +1,28 @@
 import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from '@nextui-org/react';
+import {
   Bookmark,
   CircleUser,
   Compass,
-  Ellipsis,
   Home,
   Mail,
   Settings,
   Users,
 } from 'lucide-react';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Button from '../../components/element/Button';
 import SidebarItem from '../../components/element/SideBarItem';
-import UserImg from '../../components/element/UserImg';
+import useDataLogin from '../../hook/users/useDataLogin';
 import './SideBar.css';
 
 export default function SideBarLeft() {
+  const { data = {} } = useDataLogin();
   const sidebarItems = [
     { icon: <Home />, text: 'Home', link: '' },
     { icon: <Compass />, text: 'Explore', link: 'explore' },
@@ -42,12 +50,46 @@ export default function SideBarLeft() {
         <Button fullrounded className="h-10 bg-[#3769A5] ">
           Post
         </Button>
-        <div className="flex flex-wrap items-center px-2 justify-between ">
-          <UserImg alt="profile" />
+        <div className="flex flex-wrap items-center px-1 justify-between ">
+          <Dropdown placement="bottom-end">
+            <DropdownTrigger>
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Profile Actions" variant="flat">
+              <DropdownItem
+                textValue="header"
+                key="profile"
+                className="h-14 gap-2"
+              >
+                <p className="font-semibold">Signed in as</p>
+                <p className="font-semibold">{data?.query?.email}</p>
+              </DropdownItem>
+              <DropdownItem textValue="Profile" key="profiles">
+                <NavLink to="/profile">Profile</NavLink>
+              </DropdownItem>
+              <DropdownItem textValue="settings" key="settings">
+                Settings
+              </DropdownItem>
+
+              <DropdownItem textValue="config" key="configurations">
+                Configurations
+              </DropdownItem>
+              <DropdownItem textValue="feedback" key="help_and_feedback">
+                Help & Feedback
+              </DropdownItem>
+              <DropdownItem textValue="logout" key="logout" color="danger">
+                Log Out
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
           <div className="">
-            <p>User</p>
+            <p>{data?.query?.username || 'user'}</p>
           </div>
-          <Ellipsis size={24} strokeWidth={1.5} />
         </div>
       </div>
     </div>

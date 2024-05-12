@@ -20,6 +20,9 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-no-target-blank': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
+    'react/forbid-prop-types': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

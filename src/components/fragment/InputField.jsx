@@ -7,6 +7,7 @@ export default function InputField({
   required,
   type,
   labelName,
+  disabled,
   ...props
 }) {
   return (
@@ -20,6 +21,7 @@ export default function InputField({
       <input
         name={name}
         id={htmlFor}
+        disabled={disabled}
         required={required}
         type={type}
         {...props}
@@ -36,10 +38,12 @@ InputField.propTypes = {
   required: PropTypes.bool,
   type: PropTypes.string.isRequired,
   labelName: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 InputField.defaultProps = {
   name: '',
   placeholder: '',
   required: false,
+  disabled: false,
 };

@@ -1,10 +1,17 @@
+import Cookies from 'js-cookie';
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import Navbar from '../../Content/Navbar/Navbar';
 import SideBarLeft from '../../Content/SideBarLeft/SideBar';
 import SideBarRigt from '../../Content/SideBarRight/SideBar';
 
 export default function Beranda() {
+  const token = Cookies.get('token');
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <>
       <Navbar />

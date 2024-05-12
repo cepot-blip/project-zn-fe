@@ -3,11 +3,10 @@ import React, { useMemo, useReducer } from 'react';
 import { loginContext } from './useAuth';
 
 const initalState = {
-  isLoggedIn: false,
-  username: 'coiicii',
-  password: 'isisiaixoa',
-  email: 'jhndoe@jgfs.com',
-  token: '',
+  username: '',
+  password: '',
+  email: '',
+  fullName: '',
 };
 
 const reducer = (state, action) => {
@@ -18,6 +17,10 @@ const reducer = (state, action) => {
       return { ...state, password: action.payload };
     case 'SET_EMAIL':
       return { ...state, email: action.payload };
+    case 'SET_FULLNAME':
+      return { ...state, fullName: action.payload };
+    case 'SET_RESET':
+      return { ...state, username: '', password: '', email: '', fullName: '' };
     default:
       return state;
   }

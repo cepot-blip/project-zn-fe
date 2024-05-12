@@ -11,7 +11,6 @@ export default function SetProfile() {
     const file = event.target.files[0];
 
     if (file) {
-      // Handle the file upload, e.g., send it to a server or process it
       toast.success('File uploaded successfully!');
     }
   };

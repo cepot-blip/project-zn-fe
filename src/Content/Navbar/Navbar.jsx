@@ -3,8 +3,11 @@ import { Bell, ChevronDown } from 'lucide-react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import UserImg from '../../components/element/UserImg';
+import useDataLogin from '../../hook/users/useDataLogin';
 
 export default function Navbar() {
+  const { data = {} } = useDataLogin();
+
   return (
     <div className="flex justify-between items-center px-20 mx-auto shadow">
       <div>
@@ -29,7 +32,7 @@ export default function Navbar() {
             />
           </NavLink>
 
-          <h1>Username</h1>
+          <h1>{data?.query?.username}</h1>
 
           <NavLink to="#">
             <ChevronDown size={16} strokeWidth={1.25} />

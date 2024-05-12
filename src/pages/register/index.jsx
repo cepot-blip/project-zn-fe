@@ -4,21 +4,21 @@ import Button from '../../components/element/Button';
 import InputField from '../../components/fragment/InputField';
 import AuthTemplate from '../../components/template/AuthTemplate';
 import { useAuth } from '../../context/useAuth';
-import useRegister from '../../hook/useRegister';
+import useRegister from '../../hook/users/useRegister';
 
 export default function Register() {
   const { state, dispatch } = useAuth();
+
   const { register, isSuccess } = useRegister();
   const handleRegister = () => {
     register({
       username: state.username,
       email: state.email,
       password: state.password,
+      fullName: state.fullName,
     });
     if (isSuccess) {
-      dispatch({ type: 'SET_USERNAME', payload: '' });
-      dispatch({ type: 'SET_EMAIL', payload: '' });
-      dispatch({ type: 'SET_PASSWORD', payload: '' });
+      dispatch({ type: 'SET_RESET' });
     }
   };
 
@@ -26,6 +26,18 @@ export default function Register() {
 
   return (
     <AuthTemplate on image="Register.png" title="Daftar Sekarang!">
+      <InputField
+        htmlFor="fullName"
+        labelName="Full Name"
+        name="fullName"
+        placeholder="Masukkan nama lengkap Anda"
+        required
+        type="text"
+        value={state.fullName}
+        onChange={(e) =>
+          dispatch({ type: 'SET_FULLNAME', payload: e.target.value })
+        }
+      />
       <InputField
         htmlFor="username"
         labelName="Username"

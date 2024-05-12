@@ -13,7 +13,9 @@ export default function SidebarItem({ icon, text, link }) {
       className={`flex items-center px-2 h-auto rounded-xl py-2 lg:grid lg:grid-cols-3 ${pathname[pathname.length - 1] === link && 'bg-[#4C93F4]/20'} hover:scale-105 hover:bg-[#4C93F4]/10 active:scale-75 duration-200 transition-all ease-in active:bg-[#4C93F4]/40`}
     >
       {icon}
-      <p className="hidden lg:block font-bold text-sm">{text}</p>
+      <p className="hidden transition-all duration-500 ease-in lg:block font-bold text-sm">
+        {text}
+      </p>
     </NavLink>
   );
 }
