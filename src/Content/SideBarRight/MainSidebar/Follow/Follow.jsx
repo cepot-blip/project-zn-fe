@@ -19,10 +19,10 @@ export default function Follow() {
 
   return (
     <div
-      className={`shadow-md ${hideWhenPath.includes(pathname[pathname.length - 1]) ? 'hidden' : ''} w-full border py-[5%] mt-8 px-[6%] rounded-md`}
+      className={`shadow-md ${hideWhenPath.includes(pathname[pathname.length - 1]) ? 'hidden' : ''} w-fit border py-[5%] mt-8 px-[6%] rounded-md`}
     >
       <h1 className="font-bold">Follow</h1>
-      <div className="flex flex-col gap-2 mt-3">
+      <div className="flex flex-col gap-2 mt-3 w-full ">
         {followData.map((user, index) => (
           <UserItem key={user.name + index.toString()} user={user} />
         ))}

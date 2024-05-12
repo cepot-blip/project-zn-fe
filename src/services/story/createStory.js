@@ -1,23 +1,16 @@
 /* eslint-disable camelcase */
 
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axiosInstance from '../AxiosInstance';
 
 export default async function createStory({ title, content, image_link }) {
   try {
-    const res = await axios.post(
+    const res = await axiosInstance.post(
       'http://localhost:9000/api_v1/stories',
       {
         title,
         content,
         image_link,
         category_id: 1,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${Cookies.get('token')}`,
-          'Content-Type': 'application/json',
-        },
       },
     );
     return res.data;

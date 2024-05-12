@@ -4,8 +4,8 @@ import React from 'react';
 
 export default function Trandding({ data }) {
   return (
-    <div className="top-1">
-      <div>
+    <div className="flex items-center gap-2 justify-between px-1">
+      <div className="w-[128px]">
         <p className="top-1-1">{data.title}</p>
         <p className="top-1-2 font-bold">{data.topic}</p>
         <p className="top-1-1">{data.postCount} post</p>

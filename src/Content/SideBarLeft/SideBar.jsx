@@ -34,8 +34,8 @@ export default function SideBarLeft() {
   ];
 
   return (
-    <div className="flex row-span-1 justify-self-start col-span-1 flex-col items-center justify-between lg:h-[90vh] pb-10">
-      <div className="flex flex-col w-full gap-4 px-4 mt-10 justify-center ">
+    <div className="flex flex-col items-center justify-between lg:h-[90vh] pb-10">
+      <div className="hidden lg:flex flex-col w-full gap-4 px-4 mt-10 justify-center ">
         {sidebarItems.map((item) => (
           <SidebarItem
             key={item.text}

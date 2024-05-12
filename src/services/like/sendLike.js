@@ -1,18 +1,11 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axiosInstance from '../AxiosInstance';
 
 export default async function sendandDeleteLike({ id, likeId }) {
   if (!likeId) {
     try {
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         `http://localhost:9000/api_v1/stories/${id}/like`,
         {},
-        {
-          headers: {
-            Authorization: `Bearer ${Cookies.get('token')}`,
-            'Content-Type': 'application/json',
-          },
-        },
       );
       return res.data;
     } catch (error) {
@@ -27,14 +20,8 @@ export default async function sendandDeleteLike({ id, likeId }) {
     }
   } else {
     try {
-      const res = await axios.delete(
+      const res = await axiosInstance.delete(
         `http://localhost:9000/api_v1/stories/${id}/like/${likeId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${Cookies.get('token')}`,
-            'Content-Type': 'application/json',
-          },
-        },
       );
       return res.data;
     } catch (error) {

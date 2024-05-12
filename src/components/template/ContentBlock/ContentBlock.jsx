@@ -40,12 +40,12 @@ export default function ContentBlock({ item }) {
         <div className="mt-4">
           <p>{item.content || 'no content'}</p>
           {item?.image_link && (
-            <div className="mt-4 flex overflow-hidden justify-center w-full max-w-[440px] bg-red-900 lg:h-64 md:h-48 h-32 rounded-md">
+            <div className="mt-4 flex overflow-hidden justify-center w-full md:max-w-52  lg:max-w-[440px] bg-red-900 lg:h-64 md:h-48 h-32 rounded-md">
               <Image
                 alt="NextUI hero Image"
                 src={item.image_link}
                 width={458}
-                className="object-cover max-w-[458px] max-h-full  rounded-md"
+                className="object-cover md:max-w-52  lg:max-w-[440px] max-h-full  rounded-md"
               />
             </div>
           )}

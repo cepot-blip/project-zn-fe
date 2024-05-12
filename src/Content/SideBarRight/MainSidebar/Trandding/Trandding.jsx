@@ -18,12 +18,14 @@ export default function Top() {
   const hideWhenPath = ['explore', 'message'];
   return (
     <div
-      className={`top ${hideWhenPath.includes(pathname[pathname.length - 1]) ? 'hidden' : ''} shadow-md w-full border py-[5%] px-[6%] rounded-md`}
+      className={`top ${hideWhenPath.includes(pathname[pathname.length - 1]) ? 'hidden' : ''} shadow-md w-fit border py-[5%] px-[6%] rounded-md`}
     >
       <h1 className="font-bold text-base">Trending</h1>
-      {TranddingData.map((data) => (
-        <Trandding key={data.title} data={data} />
-      ))}
+      <div className="flex flex-col gap-2 mt-3 w-full">
+        {TranddingData.map((data) => (
+          <Trandding key={data.title} data={data} />
+        ))}
+      </div>
       <div className="top-2">
         <NavLink to="#">See more</NavLink>
       </div>

@@ -15,6 +15,9 @@ export default {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },
+      screens: {
+        md: '798px',
+      },
     },
   },
   darkMode: 'class',
