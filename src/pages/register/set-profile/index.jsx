@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Button from '../components/element/Button';
+import Button from '../../../components/element/Button';
 
 export default function SetProfile() {
   const [skip, setSkip] = useState(false);
@@ -11,7 +11,6 @@ export default function SetProfile() {
     const file = event.target.files[0];
 
     if (file) {
-      // Handle the file upload, e.g., send it to a server or process it
       toast.success('File uploaded successfully!');
     }
   };
@@ -21,7 +20,7 @@ export default function SetProfile() {
   };
 
   if (skip) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/beranda" replace />;
   }
 
   return (

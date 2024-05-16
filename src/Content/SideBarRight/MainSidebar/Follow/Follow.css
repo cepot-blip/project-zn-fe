@@ -1,7 +1,9 @@
 .follow {
   border: 1px solid black;
   border-radius: 10px;
-  padding: 5% 8%;
+
+  padding: 3% 4% 5% 8%;
+
   margin-top: 5%;
 }
 
@@ -10,23 +12,6 @@
   grid-template-columns: 20% 40% 40%;
   justify-content: space-between;
   margin-top: 5%;
-}
-
-.follow-1-1 {
-  background-color: rgb(71, 100, 203);
-  border-radius: 50%;
-  width: 3.5vw;
-  height: 7vh;
-}
-
-.follow-1-2 {
-  display: grid;
-  grid-template-columns: 80% 20%;
-  padding-left: 5%;
-}
-
-.follow-1-2-1 h1 {
-  font-size: bold;
 }
 
 .follow-1-2-1 p {

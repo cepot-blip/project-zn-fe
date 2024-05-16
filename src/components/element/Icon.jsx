@@ -1,16 +1,32 @@
-import React from 'react';
 import {
-  MessageSquare,
-  Heart,
-  Bookmark,
   BarChart2,
+  Bookmark,
+  Heart,
+  MessageSquareMore,
   Share2,
-} from 'react-feather';
+} from 'lucide-react';
 
-export const Icons = [
-  { id: 1, icon: <MessageSquare /> },
-  { id: 2, icon: <Heart /> },
-  { id: 3, icon: <Share2 /> },
-  { id: 4, icon: <Bookmark /> },
-  { id: 5, icon: <BarChart2 /> },
+const Icons = [
+  {
+    id: 1,
+    icon: MessageSquareMore,
+  },
+  {
+    id: 2,
+    icon: Heart,
+  },
+  {
+    id: 3,
+    icon: Share2,
+  },
+  {
+    id: 4,
+    icon: Bookmark,
+  },
+  {
+    id: 5,
+    icon: BarChart2,
+  },
 ];
+
+export default Icons;

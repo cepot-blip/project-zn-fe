@@ -1,14 +1,16 @@
 import React from 'react';
 import ContentBlock from '../../../components/template/ContentBlock/ContentBlock';
 
-const MainContent = () => {
+import useGetStory from '../../../hook/story/useGetStory';
+
+export default function MainContent() {
+  const { data = {} } = useGetStory();
+
   return (
     <div className="MainContent">
-      <ContentBlock />
-      <ContentBlock />
-      <ContentBlock />
+      {data?.query?.map((item) => (
+        <ContentBlock key={item.id} item={item} />
+      ))}
     </div>
   );
-};
-
-export default MainContent;
+}
