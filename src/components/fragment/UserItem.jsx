@@ -8,7 +8,7 @@ export default function UserItem({ user }) {
   return (
     <div className="flex items-center gap-2 justify-between px-1">
       <div className="flex items-center gap-1">
-        <UserImg alt="profile" size={12} />
+        <UserImg alt="profile" />
         <div className="flex items-center">
           <div>
             <h1 className="font-bold text-base md:text-sm">{user.name}</h1>

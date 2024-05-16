@@ -10,11 +10,11 @@ export default function UserImg({ src, alt, size, ...props }) {
 UserImg.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
-  size: PropTypes.number,
+  size: PropTypes.string,
 };
 
 UserImg.defaultProps = {
   src: '',
   alt: '',
-  size: 12,
+  size: '',
 };
