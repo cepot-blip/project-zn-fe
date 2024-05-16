@@ -22,10 +22,10 @@ export default function Login() {
     <AuthTemplate image="Login.png" title="Sign In to Your Account">
       <InputField
         htmlFor="email"
-        labelName="Email Address"
+        labelName="Email Address / Phone Number"
         name="email"
         value={state.email}
-        placeholder="Masukkan Alamat Email Anda"
+        placeholder="email@example.com"
         required
         disabled={isLoading}
         onChange={(e) =>
@@ -36,7 +36,7 @@ export default function Login() {
       <InputField
         htmlFor="password"
         labelName="Password"
-        placeholder="Masukkan Password Anda"
+        placeholder="********"
         type="password"
         name="password"
         disabled={isLoading}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../../components/element/Button';
 import InputField from '../../components/fragment/InputField';
 import AuthTemplate from '../../components/template/AuthTemplate';
@@ -16,13 +16,12 @@ export default function Register() {
       email: state.email,
       password: state.password,
       fullName: state.fullName,
+      phone_number: state.phoneNumber,
     });
     if (isSuccess) {
       dispatch({ type: 'SET_RESET' });
     }
   };
-
-  if (isSuccess) return <Navigate to="/login" replace />;
 
   return (
     <AuthTemplate on image="Register.png" title="Daftar Sekarang!">
@@ -42,7 +41,7 @@ export default function Register() {
         htmlFor="username"
         labelName="Username"
         name="username"
-        placeholder="Masukkan nama lengkap Anda"
+        placeholder="Masukkan username Anda"
         required
         type="text"
         value={state.username}
@@ -60,6 +59,18 @@ export default function Register() {
         value={state.email}
         onChange={(e) =>
           dispatch({ type: 'SET_EMAIL', payload: e.target.value })
+        }
+      />
+      <InputField
+        htmlFor="phone"
+        labelName="Phone Number"
+        name="phone "
+        type="text"
+        placeholder="08199191923"
+        required
+        value={state.phoneNumber}
+        onChange={(e) =>
+          dispatch({ type: 'SET_PHONE', payload: e.target.value })
         }
       />
       <InputField

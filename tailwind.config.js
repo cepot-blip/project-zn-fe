@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#233691',
+        primary: '#429EBD',
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],

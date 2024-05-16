@@ -6,7 +6,8 @@ import UserImg from '../../components/element/UserImg';
 import useDataLogin from '../../hook/users/useDataLogin';
 
 export default function Navbar() {
-  const { data = {} } = useDataLogin();
+  const { userLogin } = useDataLogin();
+  const profilePicture = userLogin?.query?.profilePicture;
 
   return (
     <div className="w-screen mx-auto shadow  px-4">
@@ -31,14 +32,10 @@ export default function Navbar() {
           </NavLink>
           <div className="flex items-center gap-3">
             <NavLink to="#">
-              <UserImg
-                src="https://th.bing.com/th/id/OIP.Sw0g2adwtwCJAbIAveYGbgHaHa?rs=1&pid=ImgDetMain"
-                alt="profile"
-                size="sm"
-              />
+              <UserImg src={profilePicture} alt="profile" size="sm" />
             </NavLink>
 
-            <h1>{data?.query?.username}</h1>
+            <h1>{userLogin?.query?.username}</h1>
 
             <NavLink to="#">
               <ChevronDown size={12} strokeWidth={1.25} />

@@ -7,6 +7,7 @@ const initalState = {
   password: '',
   email: '',
   fullName: '',
+  phoneNumber: '',
 };
 
 const reducer = (state, action) => {
@@ -21,6 +22,8 @@ const reducer = (state, action) => {
       return { ...state, fullName: action.payload };
     case 'SET_RESET':
       return { ...state, username: '', password: '', email: '', fullName: '' };
+    case 'SET_PHONE':
+      return { ...state, phoneNumber: action.payload };
     default:
       return state;
   }

@@ -11,6 +11,7 @@ axiosInstance.interceptors.request.use(
     const token = Cookies.get('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`; // eslint-disable-line no-param-reassign
+      config.headers['Content-Type'] = 'application/json'; // eslint-disable-line no-param-reassign
     }
 
     return config;

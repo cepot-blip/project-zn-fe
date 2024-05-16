@@ -14,7 +14,7 @@ export default function InputField({
     <div>
       <label
         htmlFor={htmlFor}
-        className="block text-white  pb-1 font-medium text-xl"
+        className="block text-white  pb-1 font-medium text-xl mt-4"
       >
         {labelName} {required && <span className="text-red-600">*</span>}
       </label>

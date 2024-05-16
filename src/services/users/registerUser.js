@@ -1,10 +1,13 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
+import Cookie from 'js-cookie';
 
 export default async function createUser({
   username,
   email,
   password,
   fullName,
+  phone_number,
 }) {
   try {
     const response = await axios.post(
@@ -14,8 +17,11 @@ export default async function createUser({
         email,
         password,
         fullName,
+        phone_number,
       },
     );
+
+    Cookie.set('token', response.data.token);
     return response.data;
   } catch (error) {
     if (error.response) {
