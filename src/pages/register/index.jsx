@@ -1,25 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/element/Button';
-import InputField from '../../components/fragment/InputField';
-import AuthTemplate from '../../components/template/AuthTemplate';
-import { useAuth } from '../../context/useAuth';
+import InputField from '../../components/fragment/auth/InputField';
+import AuthTemplate from '../../components/template/auth/AuthTemplate';
 import useRegister from '../../hook/users/useRegister';
+import useAuthStore from '../../store/auth/store';
 
 export default function Register() {
-  const { state, dispatch } = useAuth();
+  const {
+    username,
+    password,
+    email,
+    fullName,
+    phoneNumber,
+    setUsername,
+    setPassword,
+    setEmail,
+    setFullName,
+    setPhoneNumber,
+    setReset,
+  } = useAuthStore((state) => ({
+    username: state.username,
+    password: state.password,
+    email: state.email,
+    fullName: state.fullName,
+    phoneNumber: state.phoneNumber,
+    setUsername: state.setUsername,
+    setPassword: state.setPassword,
+    setEmail: state.setEmail,
+    setFullName: state.setFullName,
+    setPhoneNumber: state.setPhoneNumber,
+    setReset: state.setReset,
+  }));
 
   const { register, isSuccess } = useRegister();
   const handleRegister = () => {
     register({
-      username: state.username,
-      email: state.email,
-      password: state.password,
-      fullName: state.fullName,
-      phone_number: state.phoneNumber,
+      username,
+      email,
+      password,
+      fullName,
+      phone_number: phoneNumber,
     });
     if (isSuccess) {
-      dispatch({ type: 'SET_RESET' });
+      setReset();
     }
   };
 
@@ -32,10 +56,8 @@ export default function Register() {
         placeholder="Masukkan nama lengkap Anda"
         required
         type="text"
-        value={state.fullName}
-        onChange={(e) =>
-          dispatch({ type: 'SET_FULLNAME', payload: e.target.value })
-        }
+        value={fullName}
+        onChange={(e) => setFullName(e.target.value)}
       />
       <InputField
         htmlFor="username"
@@ -44,10 +66,8 @@ export default function Register() {
         placeholder="Masukkan username Anda"
         required
         type="text"
-        value={state.username}
-        onChange={(e) =>
-          dispatch({ type: 'SET_USERNAME', payload: e.target.value })
-        }
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <InputField
         htmlFor="email"
@@ -56,10 +76,8 @@ export default function Register() {
         type="email"
         placeholder="Masukkan alamat email Anda"
         required
-        value={state.email}
-        onChange={(e) =>
-          dispatch({ type: 'SET_EMAIL', payload: e.target.value })
-        }
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <InputField
         htmlFor="phone"
@@ -68,10 +86,8 @@ export default function Register() {
         type="text"
         placeholder="08199191923"
         required
-        value={state.phoneNumber}
-        onChange={(e) =>
-          dispatch({ type: 'SET_PHONE', payload: e.target.value })
-        }
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
       />
       <InputField
         htmlFor="password"
@@ -80,10 +96,8 @@ export default function Register() {
         type="password"
         placeholder="Masukkan Password Anda"
         required
-        value={state.password}
-        onChange={(e) =>
-          dispatch({ type: 'SET_PASSWORD', payload: e.target.value })
-        }
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <div className="mt-4">
         <Button type="submit" onClick={handleRegister}>

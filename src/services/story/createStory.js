@@ -10,7 +10,7 @@ export default async function createStory({ title, content, image_link }) {
         title,
         content,
         image_link,
-        category_id: 1,
+        category_id: 5,
       },
     );
     return res.data;

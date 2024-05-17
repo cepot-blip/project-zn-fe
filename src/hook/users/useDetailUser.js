@@ -5,7 +5,7 @@ export default function useDetailUser(id) {
   const userId = id;
 
   const { data: user } = useQuery({
-    queryKey: ['user', userId],
+    queryKey: ['userbyId', userId],
     queryFn: () => getDetailUser(userId),
   });
 

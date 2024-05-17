@@ -2,20 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '../../components/element/Button';
-import InputField from '../../components/fragment/InputField';
-import AuthTemplate from '../../components/template/AuthTemplate';
-import { useAuth } from '../../context/useAuth';
+import InputField from '../../components/fragment/auth/InputField';
+import AuthTemplate from '../../components/template/auth/AuthTemplate';
 import useLogin from '../../hook/users/useLogin';
+import useAuthStore from '../../store/auth/store';
 
 export default function Login() {
-  const { state, dispatch } = useAuth();
+  const loginInput = useAuthStore((state) => state.loginInput);
+  const setLoginInput = useAuthStore((state) => state.setLoginInput);
+  const setReset = useAuthStore((state) => state.setReset);
+  const setPassword = useAuthStore((state) => state.setPassword);
+  const password = useAuthStore((state) => state.password);
   const { login, isLoading } = useLogin();
   function handleLogin() {
-    if (!state.email || !state.password) {
+    if (!loginInput || !password) {
       toast.error('Email dan Password harus diisi');
       return;
     }
-    login({ email: state.email, password: state.password });
+    login({ loginInput, password });
+    setReset();
   }
 
   return (
@@ -24,13 +29,11 @@ export default function Login() {
         htmlFor="email"
         labelName="Email Address / Phone Number"
         name="email"
-        value={state.email}
+        value={loginInput}
         placeholder="email@example.com"
         required
         disabled={isLoading}
-        onChange={(e) =>
-          dispatch({ type: 'SET_EMAIL', payload: e.target.value })
-        }
+        onChange={(e) => setLoginInput(e.target.value)}
         type="email"
       />
       <InputField
@@ -40,10 +43,8 @@ export default function Login() {
         type="password"
         name="password"
         disabled={isLoading}
-        value={state.password}
-        onChange={(e) =>
-          dispatch({ type: 'SET_PASSWORD', payload: e.target.value })
-        }
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         required
       />
       <div className="mt-4">

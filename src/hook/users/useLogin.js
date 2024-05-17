@@ -6,7 +6,8 @@ import loginUser from '../../services/users/loginUser';
 export default function useLogin() {
   const navigate = useNavigate();
   const { mutate: login, isLoading } = useMutation({
-    mutationFn: ({ email, password }) => loginUser({ email, password }),
+    mutationFn: ({ loginInput, password }) =>
+      loginUser({ loginInput, password }),
     onSuccess: () => {
       toast.success('Login Success');
       navigate('/');

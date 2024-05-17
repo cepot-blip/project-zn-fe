@@ -3,7 +3,7 @@ import userLoginData from '../../services/users/userLoginData';
 
 export default function useDataLogin() {
   const { data: userLogin } = useQuery({
-    queryKey: ['user'],
+    queryKey: ['userlogin'],
     queryFn: () => userLoginData(),
   });
 

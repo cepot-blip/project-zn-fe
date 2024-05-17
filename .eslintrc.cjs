@@ -14,6 +14,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    camelcase: 'off',
     'implicit-arrow-linebreak': 'off',
     'react/jsx-curly-newline': 'off',
     'object-curly-newline': 'off',
