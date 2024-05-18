@@ -5,8 +5,8 @@ import ChatUserMain from '../../fragment/message/ChatUserMain';
 
 export default function ChatUser() {
   return (
-    <div className="flex px-8  border-xl relative w-full ">
-      <div className="block w-full">
+    <div className="flex px-8 h-full shadow-md w-full py-2 ">
+      <div className="flex justify-between flex-col w-full">
         <ChatUserHeader />
         <ChatUserMain />
         <ChatUserAction />

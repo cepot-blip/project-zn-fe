@@ -4,11 +4,11 @@ import ChatUser from '../../components/template/message/ChatUser';
 
 export default function Message() {
   return (
-    <div className="flex justify-between absolute ">
-      <div className="w-full mt-4 shadow-md">
+    <div className="flex h-full justify-between gap-4 w-full">
+      <div className="w-full mt-4">
         <ChatList />
       </div>
-      <div className="w-full mt-4  shadow-md">
+      <div className="w-full mt-4 ">
         <ChatUser />
       </div>
     </div>

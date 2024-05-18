@@ -8,16 +8,19 @@ import {
   Users,
 } from 'lucide-react';
 import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import SidebarItem from '../../components/fragment/beranda/SideBarLeftItem';
 import ProtectedLayout from '../../components/template/auth/ProtectedLayout';
 import Navbar from '../../components/template/beranda/Navbar';
 import SideBarLeft from '../../components/template/beranda/SideBarLeft';
-import SideBarRigt from '../../components/template/beranda/SidebarRight';
+import SidebarRight from '../../components/template/beranda/SidebarRight';
 import useDataLogin from '../../hook/users/useDataLogin';
 import { useUserStore } from '../../store/user/store';
 
 export default function Beranda() {
+  const location = useLocation();
+  const pathname = location.pathname.split('/').filter(Boolean);
+  const hideWhenPath = ['message'];
   const { userLogin = {} } = useDataLogin();
   const setUserData = useUserStore((state) => state.setUserData);
   useEffect(() => {
@@ -52,7 +55,9 @@ export default function Beranda() {
         <div className="px-3 py-4 mx-auto w-[90%]">
           <Outlet />
         </div>
-        <SideBarRigt />
+        {hideWhenPath.includes(pathname[pathname.length - 1]) ? null : (
+          <SidebarRight />
+        )}
       </div>
     </ProtectedLayout>
   );

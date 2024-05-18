@@ -6,7 +6,13 @@ import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Loading from './components/element/Loading';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+});
 
 const Login = lazy(() => import('./pages/login/index'));
 const Signup = lazy(() => import('./pages/register/index'));

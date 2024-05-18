@@ -5,16 +5,18 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useGetLike from '../../../hook/like/useGetLike';
 import useSendLike from '../../../hook/like/useSendLike';
-import useDetailUser from '../../../hook/users/useDetailUser';
+import { useUserStore } from '../../../store/user/store';
 import UserImg from '../../element/UserImg';
 
 export default function StoryPiece({ item }) {
   const [openComment, setOpenComment] = useState(false);
-  const { user = {} } = useDetailUser(item.user_id);
+  const userData = useUserStore((state) => state.userData);
   const { createLike } = useSendLike();
   const { getLikeData = { query: [] } } = useGetLike({ id: item.id });
 
-  const isLiked = getLikeData?.query[0]?.story_id === item.id;
+  //  prettier-ignore
+  const userLiked = getLikeData?.query?.filter((like) => like.user_id === userData?.id).length > 0;
+  const isLiked = getLikeData?.query[0]?.story_id === item.id && userLiked;
   const likeId = getLikeData?.query[0]?.id;
 
   function handleLike() {
@@ -29,10 +31,10 @@ export default function StoryPiece({ item }) {
     <div className="shadow-md rounded-md mt-8 border px-4 py-4">
       <div className="flex items-center gap-4">
         <NavLink to="#">
-          <UserImg src={user?.query?.profilePicture} alt="user" />
+          <UserImg src={item?.users?.profilePicture} alt="user" />
         </NavLink>
         <div className="text-sm text-gray-600">
-          <p>{user?.query?.fullName}</p>
+          <p>{item?.users?.fullName}</p>
           <p className="p">story id {item.id}</p>
         </div>
       </div>
