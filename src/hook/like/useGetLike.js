@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import getLike from '../../services/like/getLike';
+import likeService from '../../services/like';
 
 export default function useGetLike({ id }) {
   const { data: getLikeData } = useQuery({
     queryKey: ['like', id],
-    queryFn: () => getLike({ id }),
+    queryFn: () => likeService.getLike({ id }),
   });
 
   return { getLikeData };

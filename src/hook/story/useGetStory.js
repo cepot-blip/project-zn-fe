@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import getStory from '../../services/story/getStory';
+import storyService from '../../services/story';
 
 export default function useGetStory() {
   const { data } = useQuery({
     queryKey: ['story'],
-    queryFn: () => getStory(),
+    queryFn: () => storyService.getStory(),
   });
 
   return { data };
