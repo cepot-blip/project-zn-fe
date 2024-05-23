@@ -1,15 +1,14 @@
 import axiosInstance from './AxiosInstance';
 
 export default class storyService {
-  static async createStory({ title, content, image_link }) {
+  static async createStory({ category_id, content, image_link }) {
     try {
       const res = await axiosInstance.post(
         'http://localhost:9000/api_v1/stories',
         {
-          title,
           content,
           image_link,
-          category_id: 5,
+          category_id,
         },
       );
       return res.data;

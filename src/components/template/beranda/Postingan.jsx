@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 
 import { Button, Image, Select, SelectItem } from '@nextui-org/react';
 import { toast } from 'react-toastify';
+import useCreateCategory from '../../../hook/category/createCategory';
 import useCreateStory from '../../../hook/story/useCreateStory';
+import usePostinganStore from '../../../store/postingan/postinganStore';
 import { useUserStore } from '../../../store/user/store';
 import UserImg from '../../element/UserImg';
 
@@ -49,17 +51,35 @@ const categorys = [
 
 export default function Postingan() {
   const userData = useUserStore((state) => state.userData);
-  const [postingan, setPostingan] = useState('');
+  const setCategoryName = usePostinganStore((state) => state.setCategoryName);
+  const setCategoryDesc = usePostinganStore((state) => state.setCategoryDesc);
+  const category = usePostinganStore((state) => state.category);
+  const postingan = usePostinganStore((state) => state.postingan);
+  const setPost = usePostinganStore((state) => state.setPost);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const { postStory } = useCreateStory();
+  const { createCategory } = useCreateCategory();
 
   function handlePost() {
     if (!postingan) {
       toast.error('masih kosong itu cuy');
     } else {
-      postStory({ title: 'sdfsdf', content: postingan, image_link: '' });
-      setPostingan('');
+      createCategory(category, {
+        onSuccess: (data) => {
+          if (!data) {
+            toast.error('gagal membuat category');
+          } else {
+            postStory({
+              content: postingan,
+              image_link: '',
+              category_id: data?.query?.id,
+            });
+          }
+        },
+      });
+
+      setPost('');
       setImage(null);
     }
   }
@@ -78,13 +98,22 @@ export default function Postingan() {
     <div className="shadow-md rounded-md border pl-3 p-5">
       <div className="flex gap-4">
         <UserImg src={userData?.profilePicture} alt="profile" />
-        <textarea
-          type="text"
-          value={postingan}
-          placeholder="Apa Yang Anda Pikirkan ?!"
-          className="h-20 w-[90%] p-2 resize-none"
-          onChange={(e) => setPostingan(e.target.value)}
-        />
+        <div className="flex w-full flex-col gap-2">
+          <textarea
+            type="text"
+            value={postingan}
+            placeholder="Apa Yang Anda Pikirkan ?!"
+            className="h-20 border w-[90%] p-2 resize-none"
+            onChange={(e) => setPost(e.target.value)}
+          />
+          <textarea
+            type="text"
+            defaultValue={category.description}
+            placeholder="category description"
+            className="w-[90%] border p-2 resize-none"
+            onChange={(e) => setCategoryDesc(e.target.value)}
+          />
+        </div>
       </div>
       <button
         type="button"
@@ -97,10 +126,18 @@ export default function Postingan() {
         <div className="flex justify-between px-4 items-center w-full">
           <ul className="ml-10 flex gap-4 items-center w-full">
             <li>
-              <Select label="category" className="max-w-xs w-32">
-                {categorys.map((category) => (
-                  <SelectItem key={category.id} value={category.id}>
-                    {category.category_name}
+              <Select
+                value={category?.category_name}
+                onChange={(e) => setCategoryName(e.target.value)}
+                label="category"
+                className="max-w-xs w-32"
+              >
+                {categorys.map((item) => (
+                  <SelectItem
+                    key={item.category_name}
+                    value={item.category_name}
+                  >
+                    {item.category_name}
                   </SelectItem>
                 ))}
               </Select>

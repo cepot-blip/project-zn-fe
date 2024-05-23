@@ -9,14 +9,11 @@ import UserImg from '../../element/UserImg';
 
 export default function StoryPiece({ item }) {
   const [openComment, setOpenComment] = useState(false);
-  // const userData = useUserStore((state) => state.userData);
   const { createLike } = useSendLike();
   const { getLikeData = { query: [] } } = useGetLike({ id: item.id });
 
-  //  prettier-ignore
-
-  const isLiked = getLikeData?.query[0]?.story_id === item.id;
-  const likeId = getLikeData?.query[0]?.id;
+  const isLiked = getLikeData?.query?.story_id === item.id;
+  const likeId = getLikeData?.query?.id;
 
   function handleLike() {
     if (isLiked) {

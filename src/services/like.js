@@ -19,7 +19,9 @@ export default class likeService {
       : `http://localhost:9000/api_v1/stories/${id}/like`;
 
     try {
-      const res = await axiosInstance.post(url, {});
+      const res = likeId
+        ? await axiosInstance.delete(url)
+        : await axiosInstance.post(url, {});
       return res.data;
     } catch (error) {
       if (error.response) {

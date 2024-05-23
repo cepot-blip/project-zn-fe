@@ -8,8 +8,8 @@ export default function useCreateStory() {
   const queryClient = useQueryClient();
   const { mutate: postStory, isLoading } = useMutation({
     // eslint-disable-next-line camelcase
-    mutationFn: ({ title, content, image_link }) =>
-      storyService.createStory({ title, content, image_link }),
+    mutationFn: ({ category_id, content, image_link }) =>
+      storyService.createStory({ category_id, content, image_link }),
     onSuccess: () => {
       toast.success('Post Created');
       queryClient.invalidateQueries({ queryKey: ['story'] });
