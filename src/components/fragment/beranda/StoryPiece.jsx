@@ -5,18 +5,17 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useGetLike from '../../../hook/like/useGetLike';
 import useSendLike from '../../../hook/like/useSendLike';
-import { useUserStore } from '../../../store/user/store';
 import UserImg from '../../element/UserImg';
 
 export default function StoryPiece({ item }) {
   const [openComment, setOpenComment] = useState(false);
-  const userData = useUserStore((state) => state.userData);
+  // const userData = useUserStore((state) => state.userData);
   const { createLike } = useSendLike();
   const { getLikeData = { query: [] } } = useGetLike({ id: item.id });
 
   //  prettier-ignore
-  const userLiked = getLikeData?.query?.filter((like) => like.user_id === userData?.id).length > 0;
-  const isLiked = getLikeData?.query[0]?.story_id === item.id && userLiked;
+
+  const isLiked = getLikeData?.query[0]?.story_id === item.id;
   const likeId = getLikeData?.query[0]?.id;
 
   function handleLike() {

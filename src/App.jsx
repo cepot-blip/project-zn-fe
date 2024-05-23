@@ -5,6 +5,8 @@ import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Loading from './components/element/Loading';
+import Bookmark from './pages/beranda/bookmark/Bookmark';
+import Community from './pages/beranda/community/Community';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,6 +48,8 @@ function App() {
                 <Route path="for-you" element={<ExploreForYou />} />
               </Route>
               <Route path="message" element={<Message />} />
+              <Route path="save" element={<Bookmark />} />
+              <Route path="community" element={<Community />} />
             </Route>
           </Routes>
         </Suspense>
