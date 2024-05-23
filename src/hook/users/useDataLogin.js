@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import userLoginData from '../../services/users/userLoginData';
+import userService from '../../services/user';
 
 export default function useDataLogin() {
   const { data: userLogin } = useQuery({
     queryKey: ['userlogin'],
-    queryFn: () => userLoginData(),
+    queryFn: () => userService.userLoginData(),
   });
 
   return { userLogin };

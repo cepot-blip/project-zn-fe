@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import updateUser from '../../services/users/updateUser';
+import userService from '../../services/user';
 
 export default function useUpdateUser() {
   const {
@@ -17,7 +17,7 @@ export default function useUpdateUser() {
       fullName,
       profilePicture,
     }) =>
-      updateUser({
+      userService.updateUser({
         id,
         username,
         email,

@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import listUser from '../../services/users/listUser';
+import userService from '../../services/user';
 
 export default function useUser() {
   const { data } = useQuery({
     queryKey: ['user'],
-    queryFn: () => listUser(),
+    queryFn: () => userService.listUser(),
   });
 
   return { data };
