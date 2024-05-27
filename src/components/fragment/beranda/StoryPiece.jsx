@@ -1,4 +1,4 @@
-import { Image } from '@nextui-org/react';
+import { Chip, Image } from '@nextui-org/react';
 import { Heart, MessageSquareMore } from 'lucide-react';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
@@ -25,20 +25,27 @@ export default function StoryPiece({ item }) {
 
   return (
     <div className="shadow-md rounded-md mt-8 border px-4 py-4">
-      <div className="flex items-center gap-4">
-        <NavLink to="#">
-          <UserImg src={item?.users?.profilePicture} alt="user" />
-        </NavLink>
-        <div className="text-sm text-gray-600">
-          <p>{item?.users?.fullName}</p>
-          <p className="p">story id {item.id}</p>
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-4">
+          <NavLink to="#">
+            <UserImg src={item?.users?.profilePicture} alt="user" />
+          </NavLink>
+          <div className="text-sm text-gray-600">
+            <p>{item?.users?.fullName}</p>
+            <p className="p">{item?.created_at.slice(0, 10)}</p>
+          </div>
         </div>
+        {item?.category && (
+          <Chip variant="flat" color="warning">
+            {item?.category?.category_name}
+          </Chip>
+        )}
       </div>
       <div>
         <div className="mt-4">
           <p>{item.content || 'no content'}</p>
           {item?.image_link && (
-            <div className="mt-4 flex overflow-hidden justify-center w-full md:max-w-52  lg:max-w-[440px] bg-red-900 lg:h-64 md:h-48 h-32 rounded-md">
+            <div className="mt-4 flex overflow-hidden justify-center w-fit shadow-sm border rounded-md">
               <Image
                 alt="NextUI hero Image"
                 src={item.image_link}
@@ -47,6 +54,7 @@ export default function StoryPiece({ item }) {
               />
             </div>
           )}
+
           <div className="">
             <ul className="flex mt-4 gap-4 text-[#ff872e]">
               <li>

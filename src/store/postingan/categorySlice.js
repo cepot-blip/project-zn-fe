@@ -1,12 +1,6 @@
 const categorySlice = (set) => ({
-  category: {
-    category_name: '',
-    description: '',
-  },
-  setCategoryName: (name) =>
-    set((state) => ({ category: { ...state.category, category_name: name } })),
-  setCategoryDesc: (desc) =>
-    set((state) => ({ category: { ...state.category, description: desc } })),
+  category_id: '',
+  setCategoryId: (category_id) => set(() => ({ category_id })),
 });
 
 export default categorySlice;
