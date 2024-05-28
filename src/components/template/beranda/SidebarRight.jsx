@@ -10,7 +10,7 @@ export default function SidebarRight() {
     toast.success('Coming Soon');
   };
   return (
-    <div className="h-screen hidden lg:flex flex-col w-[29rem] items-center px-2 pt-4">
+    <div className="hidden lg:flex flex-col items-center px-2 pt-4">
       <Trandding />
       <Follow />
       <div className="w-full max-w-64 bg-[#3769A5] rounded-md h-[42px] flex items-center pl-4 pr-2 mt-2 fixed bottom-2 right-6">

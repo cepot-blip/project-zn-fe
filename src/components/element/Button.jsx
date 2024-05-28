@@ -16,7 +16,7 @@ export default function Button({
         {...props}
         onClick={onClick}
         type="button"
-        className={`${outline ? 'border-white hover:bg-white hover:text-[#FF872E] border w-full h-14 rounded-full' : `${className} rounded-full font-semibold text-xl text-white`}`}
+        className={`${outline ? 'border-white hover:bg-white hover:text-[#FF872E] border w-full h-14 rounded-full' : `${className} rounded-full font-semibold text-xl `}`}
       >
         {children}
       </button>
@@ -50,5 +50,5 @@ Button.defaultProps = {
 
   fullrounded: false,
   outline: false,
-  className: 'bg-[#FF872E]  hover:bg-green-400  w-full h-14',
+  className: 'bg-[#FF872E]  hover:bg-green-400  w-full h-14 text-white',
 };

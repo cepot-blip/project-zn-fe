@@ -20,7 +20,7 @@ import { useUserStore } from '../../store/user/store';
 export default function Beranda() {
   const location = useLocation();
   const pathname = location.pathname.split('/').filter(Boolean);
-  const hideWhenPath = ['message'];
+  const hideWhenPath = ['message', 'setting'];
   const { userLogin = {} } = useDataLogin();
   const setUserData = useUserStore((state) => state.setUserData);
   useEffect(() => {
@@ -52,11 +52,13 @@ export default function Beranda() {
       </div>
       <div className="container mx-auto flex justify-between justify-items-center w-full">
         <SideBarLeft />
-        <div className="px-3 py-4 mx-auto w-[90%] ">
+        <div className="px-3 py-4 w-full mx-auto flex-1">
           <Outlet />
         </div>
         {hideWhenPath.includes(pathname[pathname.length - 1]) ? null : (
-          <SidebarRight />
+          <div className="hidden lg:block lg:flex-1 max-w-[20rem] ">
+            <SidebarRight />
+          </div>
         )}
       </div>
     </ProtectedLayout>

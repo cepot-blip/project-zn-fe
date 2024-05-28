@@ -10,9 +10,9 @@ export default function TrendingList({ data }) {
   const explore = ['explore'];
   return (
     <div
-      className={`${explore.includes(pathname[pathname.length - 1]) && 'mt-4'} flex w-full items-center gap-2 justify-between px-1`}
+      className={`${explore.includes(pathname[pathname.length - 1]) && 'mt-4'} flex w-full items-center justify-between px-1`}
     >
-      <div>
+      <div className="flex flex-col">
         <p className="text-gray-400 font-medium text-sm">{data.title}</p>
         <p className="font-bold">{data.topic}</p>
         <p className="text-gray-400 font-medium text-sm">

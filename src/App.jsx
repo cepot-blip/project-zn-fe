@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import Loading from './components/element/Loading';
 import Bookmark from './pages/beranda/bookmark/Bookmark';
 import Community from './pages/beranda/community/Community';
+import Profile from './pages/beranda/profile/Profile';
+import Setting from './pages/beranda/setting/Setting';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,6 +52,8 @@ function App() {
               <Route path="message" element={<Message />} />
               <Route path="save" element={<Bookmark />} />
               <Route path="community" element={<Community />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="setting" element={<Setting />} />
             </Route>
           </Routes>
         </Suspense>

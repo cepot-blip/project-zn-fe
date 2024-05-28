@@ -19,12 +19,12 @@ export default function UserItem({ user, currentUser }) {
   }
 
   return (
-    <div className="flex items-center gap-2 justify-between px-1">
+    <div className="flex items-center justify-between px-1">
       <div className="flex items-center gap-1">
         <UserImg alt="profile" />
         <div className="flex items-center">
           <div>
-            <h1 className="font-bold text-base md:text-sm">{user.username}</h1>
+            <h1 className="font-semibold md:text-sm">{user.username}</h1>
             <p className="text-gray-500 font-bold text-[11px]">
               @{user.username}
             </p>
@@ -37,7 +37,7 @@ export default function UserItem({ user, currentUser }) {
           fullrounded
           disabled={isFollowed}
           onClick={() => handleFollow()}
-          className={`${isFollowed ? 'border border-[#3769A5] text-blue-500' : 'bg-[#3769A5]'} cursor-pointer text-xs px-1 h-6  flex items-center justify-center`}
+          className={`${isFollowed ? 'border border-[#3769A5] text-blue-500' : 'bg-[#3769A5]'} cursor-pointer text-xs px-1 h-6 flex items-center justify-center`}
         >
           {isFollowed ? 'following' : 'follow'}
         </Button>

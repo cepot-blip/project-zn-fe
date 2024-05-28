@@ -33,7 +33,7 @@ export default function SideBarLeft() {
   ];
 
   return (
-    <div className="flex flex-col shrink items-center justify-between lg:h-[90vh] pb-10">
+    <div className="flex flex-col max-w-48 items-center justify-between lg:h-[90vh] pb-10">
       <div className="hidden lg:flex flex-col w-full gap-4 px-4 mt-10 justify-center ">
         {sidebarItems.map((item) => (
           <SidebarItem
@@ -46,10 +46,10 @@ export default function SideBarLeft() {
       </div>
 
       <div className="hidden lg:flex w-[90%] flex-col gap-12 px-2">
-        <Button fullrounded className="h-10 bg-[#3769A5] ">
+        <Button fullrounded className="h-10 bg-[#3769A5] text-white">
           Post
         </Button>
-        <div className="flex flex-wrap items-center px-1 justify-between ">
+        <div className="flex gap-2 items-center px-1 justify-between ">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
@@ -86,9 +86,8 @@ export default function SideBarLeft() {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <div className="">
-            <p>{userData?.username || 'user'}</p>
-          </div>
+
+          <p>{userData?.username || 'user'}</p>
         </div>
       </div>
     </div>

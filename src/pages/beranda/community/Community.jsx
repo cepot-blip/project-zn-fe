@@ -1,4 +1,4 @@
-import { MoveLeft } from 'lucide-react';
+import { Ellipsis, MoveLeft } from 'lucide-react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -35,7 +35,7 @@ const CommunityLink = [
 export default function Community() {
   const { data = {} } = useGetStory();
   return (
-    <div className="w-full h-full">
+    <div className="h-full">
       <div className="comm-header flex gap-4 items-center">
         <button
           type="button"
@@ -46,17 +46,19 @@ export default function Community() {
         <h2 className="text-2xl font-bold border-b pb-1">Your Community</h2>
       </div>
       <div className="comm-action flex justify-center mt-4">
-        <div className="w-full px-4 flex gap-1 mt-4">
-          {CommunityLink.map((item) => (
-            <NavLink
-              className="font-bold text-center block w-24 py-2 border-b border-b-primary"
-              key={item.label}
-              to={`${item.link}`}
-            >
-              {item.label}
-            </NavLink>
+        <ul className="w-full items-center justify-around  flex mt-4">
+          {CommunityLink.map((item, index) => (
+            <li className="" key={item.label}>
+              <NavLink
+                className={`font-bold text-center block  py-2 ${index === 0 ? 'border-b-4 border-b-primary' : ''}`}
+                to={`${item.link}`}
+              >
+                {item.label}
+              </NavLink>
+            </li>
           ))}
-        </div>
+          <Ellipsis size={32} strokeWidth={1.5} />
+        </ul>
       </div>
       <div className="comm-post">
         {data?.query?.map((item) => (
