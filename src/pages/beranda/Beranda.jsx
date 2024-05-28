@@ -50,9 +50,9 @@ export default function Beranda() {
           />
         ))}
       </div>
-      <div className="container mx-auto flex justify-between justify-items-center grid-cols-7 w-full">
+      <div className="container mx-auto flex justify-between justify-items-center w-full">
         <SideBarLeft />
-        <div className="px-3 py-4 mx-auto w-[90%]">
+        <div className="px-3 py-4 mx-auto w-[90%] ">
           <Outlet />
         </div>
         {hideWhenPath.includes(pathname[pathname.length - 1]) ? null : (

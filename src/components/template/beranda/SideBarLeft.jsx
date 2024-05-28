@@ -33,7 +33,7 @@ export default function SideBarLeft() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-between lg:h-[90vh] pb-10">
+    <div className="flex flex-col shrink items-center justify-between lg:h-[90vh] pb-10">
       <div className="hidden lg:flex flex-col w-full gap-4 px-4 mt-10 justify-center ">
         {sidebarItems.map((item) => (
           <SidebarItem
