@@ -1,10 +1,10 @@
 import { Ellipsis } from 'lucide-react';
 import React from 'react';
 import StoryPiece from '../../../components/fragment/beranda/StoryPiece';
-import useGetStory from '../../../hook/story/useGetStory';
+import UseGetBookmarks from '../../../hook/bookmark/UseGetBookmark';
 
 export default function Bookmark() {
-  const { data = {} } = useGetStory();
+  const { getBookmarkData } = UseGetBookmarks();
 
   return (
     <div className="h-full w-full">
@@ -15,8 +15,8 @@ export default function Bookmark() {
         </div>
         <Ellipsis />
       </div>
-      {data?.query?.map((item) => (
-        <StoryPiece key={item.id} item={item} />
+      {getBookmarkData?.data?.map((item) => (
+        <StoryPiece key={item.id} item={item.story} />
       ))}
     </div>
   );

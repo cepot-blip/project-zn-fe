@@ -34,8 +34,8 @@ export default function Postingan() {
   const { categoryList } = GetCategory();
 
   function handlePost() {
-    if (!postingan) {
-      toast.error('masih kosong itu cuy');
+    if (!postingan || !category_id) {
+      toast.error('check lagi ada yang belum di isi tuh');
       throw new Error('masih kosong itu cuy');
     }
 

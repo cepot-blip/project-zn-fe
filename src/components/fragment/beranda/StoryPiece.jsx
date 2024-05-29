@@ -1,8 +1,10 @@
 import { Chip, Image } from '@nextui-org/react';
-import { Heart, MessageSquareMore } from 'lucide-react';
+import { Bookmark, Heart, MessageSquareMore } from 'lucide-react';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import UseGetBookmarks from '../../../hook/bookmark/UseGetBookmark';
+import UseAddOrRemoveBookmark from '../../../hook/bookmark/addorRemoveBookmark';
 import useGetLike from '../../../hook/like/useGetLike';
 import useSendLike from '../../../hook/like/useSendLike';
 import UserImg from '../../element/UserImg';
@@ -10,9 +12,16 @@ import UserImg from '../../element/UserImg';
 export default function StoryPiece({ item }) {
   const [openComment, setOpenComment] = useState(false);
   const { createLike } = useSendLike();
+  const { actionBookmark } = UseAddOrRemoveBookmark();
+  const { getBookmarkData } = UseGetBookmarks();
   const { getLikeData = { query: [] } } = useGetLike({ id: item.id });
 
-  const isLiked = getLikeData?.query?.story_id === item.id;
+  const bookmarked = getBookmarkData?.data?.filter(
+    (booked) => booked.story_id === item?.id,
+  );
+  const isBookmarked = bookmarked.length > 0;
+
+  const isLiked = getLikeData?.query?.story_id === item?.id;
   const likeId = getLikeData?.query?.id;
 
   function handleLike() {
@@ -21,6 +30,10 @@ export default function StoryPiece({ item }) {
     } else {
       createLike({ id: item.id });
     }
+  }
+
+  function handleBookmark() {
+    actionBookmark(item.id);
   }
 
   return (
@@ -69,14 +82,25 @@ export default function StoryPiece({ item }) {
                   onChange={() => setOpenComment(!openComment)}
                 />
               </li>
-              <li className="flex gap-1">
-                <button type="button" onClick={() => handleLike()}>
-                  <Heart
-                    className="hover:scale-105 active:scale-95"
-                    fill={`${isLiked ? '#FF872E' : 'none'}`}
-                  />
-                </button>
-                <p className="text-sm">{item.like_count}</p>
+              <li className="flex gap-3 items-center">
+                <div className="flex gap-1">
+                  <button type="button" onClick={() => handleLike()}>
+                    <Heart
+                      className="hover:scale-105 active:scale-95"
+                      fill={`${isLiked ? '#FF872E' : 'none'}`}
+                    />
+                  </button>
+                  <p className="text-sm">{item.like_count}</p>
+                </div>
+                <div className="flex gap-1">
+                  <button type="button" onClick={() => handleBookmark()}>
+                    <Bookmark
+                      className="hover:scale-105 active:scale-95"
+                      fill={`${isBookmarked ? '#FF872E' : 'none'}`}
+                    />
+                  </button>
+                  <p className="text-sm">{item?._count?.bookmark}</p>
+                </div>
               </li>
             </ul>
           </div>

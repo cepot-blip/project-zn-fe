@@ -15,6 +15,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     camelcase: 'off',
+    'no-underscore-dangle': 'off',
     'implicit-arrow-linebreak': 'off',
     'react/jsx-curly-newline': 'off',
     'object-curly-newline': 'off',
