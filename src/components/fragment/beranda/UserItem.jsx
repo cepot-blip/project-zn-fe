@@ -1,19 +1,22 @@
 import { CircleCheck } from 'lucide-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import UseCheckFollowing from '../../../hook/follow/checkFollowing';
 import UseSendFollow from '../../../hook/follow/useSendFollowing';
 import Button from '../../element/Button';
 import UserImg from '../../element/UserImg';
 
-export default function UserItem({ user }) {
+export default function UserItem({ user, currentUser }) {
   const { sendFollow } = UseSendFollow();
-  const { checkFollow = {} } = UseCheckFollowing(user?.id);
-  const isFollowed = checkFollow?.following_user_id === user?.id;
+  const isFollowed = currentUser?.query?.find(
+    (item) => item?.following_user_id === user?.id,
+  );
 
   function handleFollow() {
     if (isFollowed) {
-      sendFollow({ id: Number(user.id), followId: checkFollow.id });
+      sendFollow({
+        id: Number(user.id),
+        followId: isFollowed?.id,
+      });
       return null;
     }
     sendFollow({ id: Number(user?.id) });
@@ -53,9 +56,7 @@ UserItem.propTypes = {
     name: PropTypes.string,
     username: PropTypes.string,
   }),
-  currentUser: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-  }).isRequired,
+  currentUser: PropTypes.object.isRequired,
 };
 
 UserItem.defaultProps = {

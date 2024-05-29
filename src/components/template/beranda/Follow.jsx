@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import UseGetFollowing from '../../../hook/follow/useGetFollowing';
 import UseGetUser from '../../../hook/users/useUser';
 import { useUserStore } from '../../../store/user/store';
 import UserItem from '../../fragment/beranda/UserItem';
@@ -11,6 +12,7 @@ export default function Follow() {
   const pathname = location.pathname.split('/').filter(Boolean);
   if (!pathname[0]) pathname[0] = '';
   const hideWhenPath = ['message'];
+  const { data: currentUserFollowing } = UseGetFollowing(userData?.id);
 
   return (
     <div
@@ -22,7 +24,7 @@ export default function Follow() {
           <UserItem
             key={user.name + index.toString()}
             user={user}
-            currentUser={userData}
+            currentUser={currentUserFollowing}
           />
         ))}
       </div>
