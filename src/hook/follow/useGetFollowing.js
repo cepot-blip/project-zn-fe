@@ -3,7 +3,7 @@ import followService from '../../services/follow';
 
 export default function UseGetFollowing(id) {
   const { data, ...rest } = useQuery({
-    queryKey: ['followed'],
+    queryKey: ['follow'],
     queryFn: () => followService.getFollow(id),
     enabled: !!id,
   });

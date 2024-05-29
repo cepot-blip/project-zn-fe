@@ -4,18 +4,9 @@ import UseGetUser from '../../../hook/users/useUser';
 import { useUserStore } from '../../../store/user/store';
 import UserItem from '../../fragment/beranda/UserItem';
 
-// const followData = [
-//   { name: 'Mpoory', username: '@Mpoory' },
-//   { name: 'Mpoory', username: '@Mpoory' },
-//   { name: 'Mpoory', username: '@Mpoory' },
-//   { name: 'Mpoory', username: '@Mpoory' },
-//   { name: 'Mpoory', username: '@Mpoory' },
-// ];
-
 export default function Follow() {
   const userData = useUserStore((state) => state.userData);
   const { data: followData } = UseGetUser();
-
   const location = useLocation();
   const pathname = location.pathname.split('/').filter(Boolean);
   if (!pathname[0]) pathname[0] = '';

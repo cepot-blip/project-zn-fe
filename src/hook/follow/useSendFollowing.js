@@ -5,9 +5,11 @@ export default function UseSendFollow() {
   const queryClient = useQueryClient();
   const { mutate: sendFollow, ...rest } = useMutation({
     mutationKey: ['follow'],
-    mutationFn: (id) => followService.sendFollow(id),
+    mutationFn: ({ id, followId }) =>
+      followService.FollowOrUnfollow({ id, followId }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['followed'] });
+      queryClient.invalidateQueries({ queryKey: ['follow'] });
+      queryClient.invalidateQueries({ queryKey: ['user'] });
     },
   });
 

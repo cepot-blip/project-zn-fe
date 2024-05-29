@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Button, Image, Select, SelectItem } from '@nextui-org/react';
+import { X } from 'lucide-react';
 import { toast } from 'react-toastify';
 import GetCategory from '../../../hook/category/getCategory';
 import UploadImage from '../../../hook/image/uploadImage';
@@ -20,6 +21,7 @@ const iconPostingan = [
 export default function Postingan() {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const fileInputRef = useRef(null);
 
   const userData = useUserStore((state) => state.userData);
   const postingan = usePostinganStore((state) => state.postingan);
@@ -66,13 +68,16 @@ export default function Postingan() {
   }
 
   function handleImage(e) {
-    if (image) {
-      setImage(null);
-      setPreview(null);
-      return;
-    }
     setImage(e.target.files[0]);
     setPreview(URL.createObjectURL(e.target.files[0]));
+  }
+
+  function imageClose() {
+    setImage(null);
+    setPreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = null;
+    }
   }
 
   return (
@@ -89,13 +94,18 @@ export default function Postingan() {
           />
         </div>
       </div>
-      <button
-        type="button"
-        onClick={(e) => handleImage(e)}
-        className="ml-14 w-24"
-      >
-        <Image src={preview || ''} alt="" />
-      </button>
+      {preview && (
+        <div className="ml-14 relative w-24 mt-4">
+          <button
+            type="button"
+            className="absolute top-1 right-1 z-30"
+            onClick={() => imageClose()}
+          >
+            <X size={20} className="text-gray-600" />
+          </button>
+          <Image src={preview || ''} alt="" />
+        </div>
+      )}
       <div className="mt-2">
         <div className="flex justify-between px-4 items-center w-full">
           <ul className="ml-10 flex gap-4 items-center w-full">
@@ -125,6 +135,7 @@ export default function Postingan() {
                 name="imageInput"
                 id="imageInput"
                 className="hidden"
+                ref={fileInputRef}
                 onChange={(e) => handleImage(e)}
               />
             </li>

@@ -1,21 +1,23 @@
 import { CircleCheck } from 'lucide-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import UseGetFollowing from '../../../hook/follow/getFollowing';
-import UseSendFollow from '../../../hook/follow/sendFollowing';
+import UseCheckFollowing from '../../../hook/follow/checkFollowing';
+import UseSendFollow from '../../../hook/follow/useSendFollowing';
 import Button from '../../element/Button';
 import UserImg from '../../element/UserImg';
 
-export default function UserItem({ user, currentUser }) {
+export default function UserItem({ user }) {
   const { sendFollow } = UseSendFollow();
-  const { data = {} } = UseGetFollowing(currentUser?.id);
-
-  const isFollowed = data?.query?.find(
-    (item) => item.following_user_id === user.id,
-  );
+  const { checkFollow = {} } = UseCheckFollowing(user?.id);
+  const isFollowed = checkFollow?.following_user_id === user?.id;
 
   function handleFollow() {
-    sendFollow(Number(user.id));
+    if (isFollowed) {
+      sendFollow({ id: Number(user.id), followId: checkFollow.id });
+      return null;
+    }
+    sendFollow({ id: Number(user?.id) });
+    return null;
   }
 
   return (
@@ -35,9 +37,8 @@ export default function UserItem({ user, currentUser }) {
       <div>
         <Button
           fullrounded
-          disabled={isFollowed}
           onClick={() => handleFollow()}
-          className={`${isFollowed ? 'border border-[#3769A5] text-blue-500' : 'bg-[#3769A5]'} cursor-pointer text-xs px-1 h-6 flex items-center justify-center`}
+          className={`${isFollowed ? 'border border-[#3769A5] text-blue-500' : 'bg-[#3769A5] text-white'} cursor-pointer text-xs px-1 h-6 flex items-center  justify-center`}
         >
           {isFollowed ? 'following' : 'follow'}
         </Button>
