@@ -16,7 +16,11 @@ export default function Bookmark() {
         <Ellipsis />
       </div>
       {getBookmarkData?.data?.map((item) => (
-        <StoryPiece key={item.id} item={item.story} />
+        <StoryPiece
+          key={item.id}
+          item={item.story}
+          getBookmarkData={getBookmarkData}
+        />
       ))}
     </div>
   );
