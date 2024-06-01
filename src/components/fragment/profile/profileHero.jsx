@@ -1,5 +1,5 @@
+import { BriefcaseIcon, MapPinIcon } from 'lucide-react';
 import React from 'react';
-import { Briefcase, MapPin } from 'react-feather';
 import { NavLink } from 'react-router-dom';
 
 export default function ProfileHero() {
@@ -12,11 +12,11 @@ export default function ProfileHero() {
         </div>
         <div className="flex">
           <div className="flex py-2 w-[115px]">
-            <MapPin width={30} />
+            <MapPinIcon width={30} />
             <p className="text-sm text-slate-900 font-semibold">Eghead</p>
           </div>
           <div className="flex  py-2 w-[115px]">
-            <Briefcase width={30} />
+            <BriefcaseIcon width={30} />
             <p className="text-sm text-slate-900 font-semibold">Scientist</p>
           </div>
         </div>

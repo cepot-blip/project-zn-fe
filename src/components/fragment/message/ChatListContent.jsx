@@ -5,54 +5,63 @@ import UserImg from '../../element/UserImg';
 
 const data = [
   {
+    id: 1,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 2,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 3,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 4,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 5,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 6,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 7,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 8,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',
     message: 'Telkomsel mahal doang tapi lemot yang bener aja, rugi dong!!',
   },
   {
+    id: 9,
     name: 'Mpoory',
     username: '@telkomsel',
     date: '28 April',

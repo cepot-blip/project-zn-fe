@@ -1,11 +1,9 @@
 import axiosInstance from './AxiosInstance';
 
 export default class likeService {
-  static async getLike({ id }) {
+  static async getLike() {
     try {
-      const res = await axiosInstance.get(
-        `http://localhost:9000/api_v1/stories/${id}/like`,
-      );
+      const res = await axiosInstance.get('/like');
 
       return res.data;
     } catch (error) {

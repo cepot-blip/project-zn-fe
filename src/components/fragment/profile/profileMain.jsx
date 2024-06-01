@@ -1,11 +1,12 @@
+import { CalendarCheck } from 'lucide-react';
 import React from 'react';
-import { Calendar } from 'react-feather';
 import { NavLink } from 'react-router-dom';
+
 export default function ProfileMain() {
   return (
     <div className="w-full pl-8">
       <div className="flex pt-4 pb-2 border-b-1 border-black">
-        <Calendar width={30} />
+        <CalendarCheck width={30} />
         <p className="text-slate-400 tex-sm">Joined January 2020</p>
       </div>
       <div

@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import StoryPiece from '../../../components/fragment/beranda/StoryPiece';
+import UseGetBookmarks from '../../../hook/bookmark/UseGetBookmark';
 import useGetStory from '../../../hook/story/useGetStory';
 
 const CommunityLink = [
@@ -33,6 +34,7 @@ const CommunityLink = [
 ];
 
 export default function Community() {
+  const { getBookmarkData } = UseGetBookmarks();
   const { data = {} } = useGetStory();
   return (
     <div className="h-full">
@@ -62,7 +64,11 @@ export default function Community() {
       </div>
       <div className="comm-post">
         {data?.query?.map((item) => (
-          <StoryPiece key={item.id} item={item} />
+          <StoryPiece
+            getBookmarkData={getBookmarkData}
+            key={item.id}
+            item={item}
+          />
         ))}
       </div>
     </div>

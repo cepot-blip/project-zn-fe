@@ -4,26 +4,23 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import UseAddOrRemoveBookmark from '../../../hook/bookmark/addorRemoveBookmark';
-import useGetLike from '../../../hook/like/useGetLike';
 import useSendLike from '../../../hook/like/useSendLike';
 import UserImg from '../../element/UserImg';
 
-export default function StoryPiece({ item, getBookmarkData }) {
+export default function StoryPiece({ item, getBookmarkData, getLikeData }) {
   const [openComment, setOpenComment] = useState(false);
   const { actionBookmark } = UseAddOrRemoveBookmark();
-  const { getLikeData } = useGetLike({ id: item.id });
   const { createLike } = useSendLike();
 
   const bookmarked = getBookmarkData?.data?.some(
     (booked) => booked.story_id === item?.id,
   );
 
-  const isLiked = getLikeData?.query?.story_id === item?.id;
-  const likeId = getLikeData?.query?.id;
+  const isLiked = getLikeData?.query.find((like) => like.story_id === item?.id);
 
   function handleLike() {
     if (isLiked) {
-      createLike({ id: item.id, likeId });
+      createLike({ id: item.id, likeId: isLiked.id });
     } else {
       createLike({ id: item.id });
     }
@@ -109,5 +106,19 @@ export default function StoryPiece({ item, getBookmarkData }) {
 
 StoryPiece.propTypes = {
   item: PropTypes.object.isRequired,
-  getBookmarkData: PropTypes.object.isRequired,
+  getBookmarkData: PropTypes.shape({
+    status: PropTypes.bool,
+    data: PropTypes.arrayOf(PropTypes.object),
+    message: PropTypes.string,
+  }),
+  getLikeData: PropTypes.shape({
+    query: PropTypes.array.isRequired,
+  }),
+};
+
+StoryPiece.defaultProps = {
+  getBookmarkData: {},
+  getLikeData: {
+    query: [],
+  },
 };

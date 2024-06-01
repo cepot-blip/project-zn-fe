@@ -56,7 +56,11 @@ UserItem.propTypes = {
     name: PropTypes.string,
     username: PropTypes.string,
   }),
-  currentUser: PropTypes.object.isRequired,
+  currentUser: PropTypes.shape({
+    message: PropTypes.string,
+    query: PropTypes.array,
+    id: PropTypes.number,
+  }),
 };
 
 UserItem.defaultProps = {
@@ -64,4 +68,5 @@ UserItem.defaultProps = {
     name: 'Mpoory',
     username: '@Mpoory',
   },
+  currentUser: {},
 };
