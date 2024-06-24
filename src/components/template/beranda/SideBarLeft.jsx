@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from '@nextui-org/react';
+import Cookies from 'js-cookie';
 import {
   Bookmark,
   CircleUser,
@@ -15,12 +16,13 @@ import {
   Users,
 } from 'lucide-react';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../../store/user/store';
 import Button from '../../element/Button';
 import SidebarItem from '../../fragment/beranda/SideBarLeftItem';
 
 export default function SideBarLeft() {
+  const navigate = useNavigate();
   const userData = useUserStore((state) => state.userData);
   const sidebarItems = [
     { icon: <Home />, text: 'Home', link: '' },
@@ -31,6 +33,11 @@ export default function SideBarLeft() {
     { icon: <CircleUser />, text: 'Profile', link: 'profile' },
     { icon: <Settings />, text: 'Setting', link: 'setting' },
   ];
+
+  function handleLogout() {
+    Cookies.remove('token');
+    navigate('/login');
+  }
 
   return (
     <div className="flex flex-col max-w-48 items-center justify-between lg:h-[90vh] pb-10">
@@ -81,7 +88,12 @@ export default function SideBarLeft() {
               <DropdownItem textValue="feedback" key="help_and_feedback">
                 Help & Feedback
               </DropdownItem>
-              <DropdownItem textValue="logout" key="logout" color="danger">
+              <DropdownItem
+                onClick={() => handleLogout()}
+                textValue="logout"
+                key="logout"
+                color="danger"
+              >
                 Log Out
               </DropdownItem>
             </DropdownMenu>
